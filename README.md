@@ -38,12 +38,19 @@ Supabase → **Authentication**:
 - Nach deiner eigenen Registrierung: **Allow new users to sign up** ausschalten. Dann kann sich niemand sonst anmelden.
 
 ## Tägliche Runde: Regeln
-- **9 Aufgaben**: bis zu 5 fällige Wiederholungen, bis zu 2 Schwachstellen (zuletzt falsch/teils), Rest neue Aufgaben, bevorzugt aus Kapiteln mit hohem Handicap. Schwierigkeit passt sich dem Handicap an (36 → leicht, 0 → schwer).
+- **9 Aufgaben**: bis zu 3 aus dem Fehler-Bunker, fällige Wiederholungen (zusammen höchstens 6), 1 Schwachstelle (zuletzt teils), Rest neue Aufgaben, bevorzugt aus Kapiteln mit hohem Handicap. Schwierigkeit passt sich dem Handicap an (36 → leicht, 0 → schwer).
 - **Wiederholung**: richtig → wieder in 2, 5, 13, 33, 60 Tagen; teils → Abstand wächst kaum; falsch → morgen wieder.
 - **Handicap je Kapitel** (Start 36, 0–54): richtig −0,75 bis −1,75 (je schwerer, desto mehr), teils −0,25, falsch +1,5 bis +0,5 (je leichter, desto mehr).
 - **Streak**: +1 pro Tag mit abgeschlossener Runde. Extra-Runden zählen nicht doppelt.
 - **Toleranz** für Rechenaufgaben (Standard 1 %) auf der Startseite einstellbar, gilt pro Gerät.
 - Eine angefangene Runde wird am selben Tag fortgesetzt (auch nach Neuladen).
+
+## Fehler-Bunker
+- **Rein**: jede falsche Antwort (Runde, Bunker-Training, später Boss).
+- **Raus**: nach 2 richtigen Antworten an verschiedenen Tagen. Eine falsche Antwort setzt den Fortschritt auf 0.
+- **Häufiger zurück**: bis zu 3 Bunker-Aufgaben pro Täglicher Runde, dazu eigenes Training auf der Bunker-Seite (jede Aufgabe einmal pro Tag).
+- Bunker-Training ändert Wiederholungstermine, aber nicht das Handicap und nicht den Streak.
+- Fehler aus der Zeit vor dem Bunker werden beim ersten Öffnen automatisch übernommen.
 
 ## Lokal starten (optional, braucht Node.js)
 ```bash

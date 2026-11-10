@@ -123,3 +123,11 @@ button.bewertung.falsch { background: var(--fehler); }
 .balken { height: 6px; background: var(--rand); border-radius: 3px; margin: 4px 0 12px; overflow: hidden; }
 .balken > div { height: 100%; background: var(--akzent); transition: width 0.2s; }
 .zahl { white-space: nowrap; }
+.bunker-eintrag { align-items: flex-start; }
+.kurztext {
+  margin: 2px 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

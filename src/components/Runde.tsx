@@ -12,7 +12,6 @@ import {
   RUNDE_GROESSE,
   fortschrittNachRunde,
   handicapAenderung,
-  naechsteWiederholung,
   neuesHandicap,
   waehleRunde,
   type Herkunft,
@@ -28,12 +27,13 @@ import {
   speichereAntwort,
   speichereFortschritt,
   speichereHandicap,
-  speichereWiederholung,
+  type BunkerEintrag,
   type Ergebnis,
   type Fortschritt,
   type Wiederholung,
 } from '../lib/speicher';
 import { AufgabeKarte } from './AufgabeKarte';
+import { ladeBunkerAbgeglichen, verbucheFolgen, wendeBunkerFolgeAn } from '../lib/antwort';
 
 const nachId = new Map(AUFGABEN.map((a) => [a.id, a]));
 const kapitelTitel = (nr: number) => KAPITEL.find((k) => k.nr === nr)?.titel ?? `Kapitel ${nr}`;
@@ -54,6 +54,8 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
   const [index, setIndex] = useState(0);
   const [handicaps, setHandicaps] = useState<Record<number, number>>({});
   const [wiederholungen, setWiederholungen] = useState<Map<string, Wiederholung>>(new Map());
+  const [bunker, setBunker] = useState<Map<string, BunkerEintrag>>(new Map());
+  const [befreit, setBefreit] = useState(0);
   const [fortschritt, setFortschritt] = useState<Fortschritt | null>(null);
   const [fertig, setFertig] = useState<Fortschritt | null>(null);
   const [speichert, setSpeichert] = useState(false);
@@ -74,6 +76,8 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
         setHandicaps(h);
         setWiederholungen(new Map(w.map((x) => [x.aufgabe_id, x])));
         setFortschritt(f);
+        const b = await ladeBunkerAbgeglichen(a);
+        setBunker(b);
 
         const tag = heute();
         const gemerkt = ladeLaufendeRunde();
@@ -93,7 +97,14 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
         } else {
           neu = {
             datum: tag,
-            aufgaben: waehleRunde({ aufgaben: AUFGABEN, wiederholungen: w, antworten: a, handicaps: h, heute: tag }),
+            aufgaben: waehleRunde({
+              aufgaben: AUFGABEN,
+              wiederholungen: w,
+              antworten: a,
+              bunker: [...b.values()],
+              handicaps: h,
+              heute: tag,
+            }),
             ergebnisse: [],
             handicapStart: h,
           };
@@ -121,7 +132,6 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
     if (!stand) return false;
     const { aufgabe } = stand.aufgaben[index];
     const tag = heute();
-    const wNeu = naechsteWiederholung(wiederholungen.get(aufgabe.id), aufgabe, ergebnis, tag);
     const hAlt = handicaps[aufgabe.kapitel] ?? START_HANDICAP;
     const hNeu = neuesHandicap(hAlt, handicapAenderung(ergebnis, aufgabe.schwierigkeit));
     setSpeichert(true);
@@ -134,8 +144,19 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
       const zwischen = { ...stand, ergebnisse };
       setStand(zwischen);
       merke(zwischen);
-      await Promise.all([speichereWiederholung(wNeu), speichereHandicap(aufgabe.kapitel, hNeu)]);
-      setWiederholungen(new Map(wiederholungen).set(aufgabe.id, wNeu));
+      const [folgen] = await Promise.all([
+        verbucheFolgen({
+          aufgabe,
+          ergebnis,
+          heute: tag,
+          wiederholung: wiederholungen.get(aufgabe.id),
+          bunker: bunker.get(aufgabe.id),
+        }),
+        speichereHandicap(aufgabe.kapitel, hNeu),
+      ]);
+      setWiederholungen(new Map(wiederholungen).set(aufgabe.id, folgen.wiederholung));
+      setBunker(wendeBunkerFolgeAn(bunker, aufgabe.id, folgen.bunker));
+      if (folgen.bunker.art === 'raus') setBefreit((n) => n + 1);
       setHandicaps({ ...handicaps, [aufgabe.kapitel]: hNeu });
 
       if (ergebnisse.length === stand.aufgaben.length && fortschritt) {
@@ -194,6 +215,10 @@ export function Runde({ onZurueck }: { onZurueck: () => void }) {
             {zaehle('richtig')} richtig · {zaehle('teils')} teils · {zaehle('falsch')} falsch
           </p>
           {fertig && <p>Streak: {fertig.streak} {fertig.streak === 1 ? 'Tag' : 'Tage'}</p>}
+          <p className="klein">
+            Fehler-Bunker: {bunker.size} {bunker.size === 1 ? 'Aufgabe' : 'Aufgaben'}
+            {befreit > 0 && ` · ${befreit} in dieser Runde befreit`}
+          </p>
         </section>
         <section className="karte">
           <h2>Handicap</h2>

@@ -4,18 +4,29 @@ import { KAPITEL, AUFGABEN } from '../lib/aufgaben';
 import {
   initialisiereHandicaps,
   ladeFortschritt,
+  ladeAntworten,
   ladeHandicaps,
   ladeWiederholungen,
   type Fortschritt,
 } from '../lib/speicher';
 import { heute } from '../lib/datum';
 import { aktuellerStreak } from '../lib/runde';
+import { ladeBunkerAbgeglichen } from '../lib/antwort';
 import { ladeLaufendeRunde, ladeToleranz, speichereToleranz } from '../lib/einstellungen';
 
-export function Start({ email, onRunde }: { email: string; onRunde: () => void }) {
+export function Start({
+  email,
+  onRunde,
+  onBunker,
+}: {
+  email: string;
+  onRunde: () => void;
+  onBunker: () => void;
+}) {
   const [handicaps, setHandicaps] = useState<Record<number, number> | null>(null);
   const [fortschritt, setFortschritt] = useState<Fortschritt | null>(null);
   const [faellig, setFaellig] = useState<number | null>(null);
+  const [imBunker, setImBunker] = useState<number | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
   const [toleranz, setToleranz] = useState(ladeToleranz);
   const tag = heute();
@@ -27,7 +38,13 @@ export function Start({ email, onRunde }: { email: string; onRunde: () => void }
     (async () => {
       try {
         await initialisiereHandicaps();
-        const [h, f, w] = await Promise.all([ladeHandicaps(), ladeFortschritt(), ladeWiederholungen()]);
+        const [h, f, w, a] = await Promise.all([
+          ladeHandicaps(),
+          ladeFortschritt(),
+          ladeWiederholungen(),
+          ladeAntworten(),
+        ]);
+        setImBunker((await ladeBunkerAbgeglichen(a)).size);
         setHandicaps(h);
         setFortschritt(f);
         setFaellig(w.filter((x) => x.faellig_am <= heute()).length);
@@ -73,6 +90,20 @@ export function Start({ email, onRunde }: { email: string; onRunde: () => void }
             : heuteGeschafft
               ? 'Extra-Runde starten'
               : 'Runde starten'}
+        </button>
+      </section>
+
+      <section className="karte">
+        <h2>Fehler-Bunker</h2>
+        <p>
+          {imBunker === null
+            ? '…'
+            : imBunker === 0
+              ? 'Leer. Falsch beantwortete Aufgaben landen hier.'
+              : `${imBunker} ${imBunker === 1 ? 'Aufgabe' : 'Aufgaben'} im Bunker`}
+        </p>
+        <button onClick={onBunker} disabled={!!fehler || imBunker === null}>
+          Bunker öffnen
         </button>
       </section>
 

@@ -109,6 +109,7 @@ export async function ladeBunker(): Promise<BunkerEintrag[]> {
 export async function speichereBunkerEintrag(e: {
   aufgabe_id: string;
   kapitel: number;
+  seit?: string;
   richtig_tage?: string[];
 }): Promise<void> {
   pruefe(
@@ -116,6 +117,12 @@ export async function speichereBunkerEintrag(e: {
       .from('bunker')
       .upsert({ ...e, richtig_tage: e.richtig_tage ?? [] }, { onConflict: 'user_id,aufgabe_id' }),
   );
+}
+
+/** Mehrere Einträge auf einmal (für den Abgleich mit der Historie). */
+export async function speichereBunkerEintraege(e: BunkerEintrag[]): Promise<void> {
+  if (e.length === 0) return;
+  pruefe(await supabase.from('bunker').upsert(e, { onConflict: 'user_id,aufgabe_id' }));
 }
 
 export async function entferneAusBunker(aufgabe_id: string): Promise<void> {
