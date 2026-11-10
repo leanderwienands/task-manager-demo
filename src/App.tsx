@@ -3,10 +3,12 @@ import type { Session } from '@supabase/supabase-js';
 import { konfigFehler, supabase } from './lib/supabase';
 import { Login } from './components/Login';
 import { Start } from './components/Start';
+import { Runde } from './components/Runde';
 
 export function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [bereit, setBereit] = useState(false);
+  const [ansicht, setAnsicht] = useState<'start' | 'runde'>('start');
 
   useEffect(() => {
     if (konfigFehler) return;
@@ -25,5 +27,7 @@ export function App() {
       </main>
     );
   if (!bereit) return <main className="seite">Lädt …</main>;
-  return session ? <Start email={session.user.email ?? ''} /> : <Login />;
+  if (!session) return <Login />;
+  if (ansicht === 'runde') return <Runde onZurueck={() => setAnsicht('start')} />;
+  return <Start email={session.user.email ?? ''} onRunde={() => setAnsicht('runde')} />;
 }
