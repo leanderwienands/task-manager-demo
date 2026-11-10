@@ -8,6 +8,7 @@ import {
   ladeBossErgebnisse,
   ladeHandicaps,
   ladeWiederholungen,
+  START_HANDICAP,
   type Fortschritt,
 } from '../lib/speicher';
 import { heute } from '../lib/datum';
@@ -87,7 +88,6 @@ export function Start({
           Abmelden
         </button>
       </header>
-      <p className="klein">Angemeldet als {email}</p>
 
       {fehler && (
         <p className="meldung">
@@ -96,19 +96,31 @@ export function Start({
           Wurde <code>supabase/schema.sql</code> im SQL-Editor ausgeführt?
         </p>
       )}
+      {test && <p className="hinweis">Testmodus: alle Bosse frei, nichts wird gespeichert.</p>}
 
       <section className="karte">
-        <h2>Tägliche Runde</h2>
-        <p>
-          {heuteGeschafft
-            ? 'Heute geschafft ✓ Eine Extra-Runde zählt für Wiederholung und Handicap, nicht noch einmal für den Streak.'
-            : '9 Aufgaben: fällige Wiederholungen, Schwachstellen und neue Aufgaben.'}
-        </p>
-        {faellig !== null && (
+        <div className="kacheln">
+          <div className="kachel">
+            <strong>{fortschritt ? aktuellerStreak(fortschritt, tag) : '…'}</strong>
+            <span>Tage Streak</span>
+          </div>
+          <div className="kachel">
+            <strong>{faellig ?? '…'}</strong>
+            <span>heute fällig</span>
+          </div>
+          <div className="kachel">
+            <strong>{imBunker ?? '…'}</strong>
+            <span>im Bunker</span>
+          </div>
+        </div>
+        <div>
+          <h2>Tägliche Runde</h2>
           <p className="klein">
-            Heute fällig: {faellig} {faellig === 1 ? 'Wiederholung' : 'Wiederholungen'}
+            {heuteGeschafft
+              ? 'Heute geschafft ✓ Eine Extra-Runde zählt für Wiederholung und Handicap, nicht für den Streak.'
+              : '9 Aufgaben: Bunker, fällige Wiederholungen, Schwachstellen und Neues.'}
           </p>
-        )}
+        </div>
         <button onClick={onRunde} disabled={!!fehler || !fortschritt}>
           {fortsetzen
             ? `Runde fortsetzen (${fortsetzen.ergebnisse.length}/${fortsetzen.aufgaben.length})`
@@ -116,75 +128,58 @@ export function Start({
               ? 'Extra-Runde starten'
               : 'Runde starten'}
         </button>
-      </section>
-
-      <section className="karte">
-        <h2>Fehler-Bunker</h2>
-        <p>
-          {imBunker === null
-            ? '…'
-            : imBunker === 0
-              ? 'Leer. Falsch beantwortete Aufgaben landen hier.'
-              : `${imBunker} ${imBunker === 1 ? 'Aufgabe' : 'Aufgaben'} im Bunker`}
-        </p>
-        <button onClick={onBunker} disabled={!!fehler || imBunker === null}>
-          Bunker öffnen
+        <button className="zweitrangig" onClick={onBunker} disabled={!!fehler || imBunker === null}>
+          {imBunker ? `Fehler-Bunker (${imBunker})` : 'Fehler-Bunker'}
         </button>
       </section>
 
       <section className="karte">
-        <h2>Boss-Kämpfe</h2>
-        <p className="klein">
-          Klausur am Kapitelende mit Zeitlimit. Frei ab Handicap unter {BOSS_FREI_UNTER} im Kapitel.
-        </p>
-        {test && <p className="hinweis">Testmodus: alle Bosse frei, nichts wird gespeichert.</p>}
-        <ul className="liste">
+        <div>
+          <h2>Kapitel</h2>
+          <p className="klein">
+            Handicap: Start {START_HANDICAP}, niedriger ist besser. Boss-Kampf frei unter {BOSS_FREI_UNTER} (Markierung).
+          </p>
+        </div>
+        <div>
           {KAPITEL.map((k) => {
             const h = handicaps?.[k.nr];
             const frei = test || bossFrei(h);
             const bilanz = bossBilanz[k.nr];
             const laeuft = laufenderBoss?.kapitel === k.nr;
+            const anteil = h === undefined ? 0 : Math.min(1, Math.max(0, (START_HANDICAP - h) / START_HANDICAP));
             return (
-              <li key={k.nr} className="boss-zeile">
-                <span>
-                  {k.nr}. {k.titel}
-                  <span className="klein">
-                    {' · '}
-                    {bilanz
-                      ? `${bilanz.bestanden ? 'besiegt ✓' : 'noch nicht besiegt'}, bestes Ergebnis ${bilanz.bestProzent} %`
-                      : frei
-                        ? 'bereit'
-                        : `gesperrt (Handicap ${h?.toLocaleString('de-DE') ?? '…'}, nötig unter ${BOSS_FREI_UNTER})`}
+              <div key={k.nr} className="kapitel">
+                <div className="kapitel-kopf">
+                  <span className="kapitel-titel">
+                    {k.nr}. {k.titel}
                   </span>
-                </span>
-                <button className="klein-knopf" disabled={!frei && !laeuft} onClick={() => onBoss(k.nr)}>
-                  {laeuft ? 'Fortsetzen' : frei ? 'Kämpfen' : '🔒'}
-                </button>
-              </li>
+                  <span className="kapitel-wert">
+                    {h === undefined ? '…' : h.toLocaleString('de-DE')}
+                    <small>Handicap</small>
+                  </span>
+                </div>
+                <div className="skala" aria-hidden>
+                  <i className={frei ? 'frei' : ''} style={{ width: `${anteil * 100}%` }} />
+                  <b style={{ left: `${((START_HANDICAP - BOSS_FREI_UNTER) / START_HANDICAP) * 100}%` }} />
+                </div>
+                <div className="kapitel-fuss">
+                  <span className="klein">
+                    {AUFGABEN.filter((a) => a.kapitel === k.nr).length} Aufgaben
+                    {bilanz &&
+                      ` · Boss ${bilanz.bestanden ? 'besiegt ✓' : 'offen'}, bestes Ergebnis ${bilanz.bestProzent} %`}
+                  </span>
+                  <button
+                    className={`klein-knopf ${frei || laeuft ? '' : 'zweitrangig'}`}
+                    disabled={!frei && !laeuft}
+                    onClick={() => onBoss(k.nr)}
+                  >
+                    {laeuft ? 'Boss fortsetzen' : frei ? 'Boss-Kampf' : 'Boss gesperrt'}
+                  </button>
+                </div>
+              </div>
             );
           })}
-        </ul>
-      </section>
-
-      <section className="karte">
-        <h2>Streak</h2>
-        <p className="gross">{fortschritt ? `${aktuellerStreak(fortschritt, tag)} Tage` : '…'}</p>
-        {fortschritt && <p className="klein">Längster Streak: {fortschritt.laengster_streak} Tage</p>}
-      </section>
-
-      <section className="karte">
-        <h2>Handicap je Kapitel</h2>
-        <ul className="liste">
-          {KAPITEL.map((k) => (
-            <li key={k.nr}>
-              <span>
-                {k.nr}. {k.titel}
-                <span className="klein"> · {AUFGABEN.filter((a) => a.kapitel === k.nr).length} Aufgaben</span>
-              </span>
-              <strong>{handicaps ? (handicaps[k.nr] ?? '–') : '…'}</strong>
-            </li>
-          ))}
-        </ul>
+        </div>
       </section>
 
       <section className="karte">
@@ -207,6 +202,10 @@ export function Start({
         </label>
         <p className="klein">
           Beispiel: Bei 1 % gilt für die Lösung 200 alles zwischen 198 und 202 als richtig. Gilt nur auf diesem Gerät.
+        </p>
+        <p className="klein">
+          Angemeldet als {email}
+          {fortschritt && ` · Längster Streak: ${fortschritt.laengster_streak} Tage`}
         </p>
       </section>
     </main>

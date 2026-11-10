@@ -221,7 +221,7 @@ export function Bunker({ onZurueck }: { onZurueck: () => void }) {
                       <Mathe text={a.aufgabentext} />
                     </p>
                   </div>
-                  <span className="zahl" title="Richtige Tage">
+                  <span className="zahl punkte" title="Richtige Tage">
                     {'●'.repeat(Math.min(e.richtig_tage.length, RAUS_NACH_TAGEN))}
                     {'○'.repeat(Math.max(0, RAUS_NACH_TAGEN - e.richtig_tage.length))}
                   </span>
