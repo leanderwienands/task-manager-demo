@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/components/Login.tsx","./src/components/Start.tsx","./src/lib/aufgaben.ts","./src/lib/speicher.ts","./src/lib/supabase.ts","./vite.config.ts"],"version":"5.6.3"}
