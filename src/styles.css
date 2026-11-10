@@ -7,6 +7,8 @@
   --rand: #e2e2e5;
   --akzent: #2f5d8a;
   --fehler: #a8322d;
+  --gut: #2e7d4f;
+  --mittel: #9a6b00;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -18,6 +20,8 @@
     --rand: #333338;
     --akzent: #8db4dc;
     --fehler: #f08a84;
+    --gut: #7fd1a0;
+    --mittel: #e8c06a;
   }
 }
 * { box-sizing: border-box; }
@@ -47,8 +51,9 @@ h2 { font-size: 1.1rem; margin: 0 0 12px; }
   flex-direction: column;
   gap: 12px;
 }
+h3 { font-size: 0.95rem; margin: 8px 0 4px; color: var(--text-leise); }
 label { display: flex; flex-direction: column; gap: 4px; font-size: 0.95rem; }
-input {
+input, textarea {
   font-size: 17px; /* verhindert Auto-Zoom auf dem iPhone */
   padding: 10px 12px;
   border: 1px solid var(--rand);
@@ -80,3 +85,41 @@ button.link { background: none; color: var(--akzent); padding: 4px; }
 }
 .liste li:last-child { border-bottom: none; }
 code { font-size: 0.9em; }
+
+textarea { font-family: inherit; resize: vertical; }
+
+/* ---------- Tägliche Runde ---------- */
+.mathe { overflow-wrap: anywhere; }
+.mathe .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.aufgabentext { margin: 0; white-space: pre-wrap; }
+.loesung { border-top: 1px solid var(--rand); padding-top: 8px; }
+.loesung p { margin: 0 0 8px; white-space: pre-wrap; }
+.hinweis {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-leise);
+  border-left: 3px solid var(--mittel);
+  padding-left: 8px;
+}
+.eingaben { display: flex; flex-direction: column; gap: 12px; }
+.ergebnis { font-weight: 600; margin: 0; }
+.ergebnis.richtig, .treffer { color: var(--gut); }
+.ergebnis.teils { color: var(--mittel); }
+.ergebnis.falsch, .daneben { color: var(--fehler); }
+button.option {
+  text-align: left;
+  background: var(--flaeche);
+  color: var(--text);
+  border: 1px solid var(--rand);
+}
+button.option:disabled { opacity: 1; }
+button.option.gewaehlt { border: 2px solid var(--akzent); }
+button.option.treffer { border: 2px solid var(--gut); }
+button.option.daneben { border: 2px solid var(--fehler); }
+.dreier { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+button.bewertung.richtig { background: var(--gut); }
+button.bewertung.teils { background: var(--mittel); }
+button.bewertung.falsch { background: var(--fehler); }
+.balken { height: 6px; background: var(--rand); border-radius: 3px; margin: 4px 0 12px; overflow: hidden; }
+.balken > div { height: 100%; background: var(--akzent); transition: width 0.2s; }
+.zahl { white-space: nowrap; }
