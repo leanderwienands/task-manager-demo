@@ -1,0 +1,2223 @@
+{
+  "version": 1,
+  "kapitel": [
+    {
+      "nr": 0,
+      "titel": "Mathe-Grundlagen"
+    },
+    {
+      "nr": 1,
+      "titel": "Markt: Angebot und Nachfrage"
+    },
+    {
+      "nr": 2,
+      "titel": "Budgetbeschränkung"
+    },
+    {
+      "nr": 3,
+      "titel": "Präferenzen und Nutzen"
+    },
+    {
+      "nr": 4,
+      "titel": "Entscheidung / Haushaltsoptimum"
+    }
+  ],
+  "aufgaben": [
+    {
+      "id": "K0-U0-1a",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Bilden Sie die partiellen Ableitungen von $f(x,y) = 2x + y$.",
+      "loesung": "$\\frac{\\partial f}{\\partial x} = 2$, $\\frac{\\partial f}{\\partial y} = 1$",
+      "loesungsweg": "Beim Ableiten nach $x$ wird $y$ als Konstante behandelt: $\\frac{\\partial}{\\partial x}(2x+y) = 2$. Analog nach $y$: $\\frac{\\partial}{\\partial y}(2x+y) = 1$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "∂f/∂x",
+          "wert": 2
+        },
+        {
+          "label": "∂f/∂y",
+          "wert": 1
+        }
+      ]
+    },
+    {
+      "id": "K0-U0-1b",
+      "kapitel": 0,
+      "typ": "herleitung",
+      "aufgabentext": "Bilden Sie die partiellen Ableitungen von $g(x_1,x_2) = x_1 \\cdot x_2$.",
+      "loesung": "$\\frac{\\partial g}{\\partial x_1} = x_2$, $\\frac{\\partial g}{\\partial x_2} = x_1$",
+      "loesungsweg": "Nach $x_1$ ableiten: $x_2$ ist ein konstanter Faktor, also $\\frac{\\partial g}{\\partial x_1} = x_2$. Analog $\\frac{\\partial g}{\\partial x_2} = x_1$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false
+    },
+    {
+      "id": "K0-U0-1c",
+      "kapitel": 0,
+      "typ": "herleitung",
+      "aufgabentext": "Bilden Sie die partiellen Ableitungen von $u(x_1,x_2) = x_1 + \\sqrt{x_2}$.",
+      "loesung": "$\\frac{\\partial u}{\\partial x_1} = 1$, $\\frac{\\partial u}{\\partial x_2} = \\frac{1}{2\\sqrt{x_2}}$",
+      "loesungsweg": "$\\sqrt{x_2} = x_2^{1/2}$. Potenzregel: $\\frac{\\partial}{\\partial x_2} x_2^{1/2} = \\frac{1}{2}x_2^{-1/2} = \\frac{1}{2\\sqrt{x_2}}$. Der Summand $x_1$ abgeleitet nach $x_1$ ergibt $1$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false
+    },
+    {
+      "id": "K0-U0-2a",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Die Punktzahl eines Studenten ist $S(H,P) = \\frac{4H}{1+0{,}1P}$ ($H$ = Lernstunden, $P$ = Handypausen). Angenommen er macht insgesamt 6 Handypausen. Um wie viele Punkte steigt seine Punktzahl mit jeder zusätzlichen Stunde?",
+      "loesung": "$2{,}5$ Punkte",
+      "loesungsweg": "$\\frac{\\partial S}{\\partial H} = \\frac{4}{1+0{,}1P}$. Mit $P=6$: $\\frac{4}{1+0{,}6} = \\frac{4}{1{,}6} = 2{,}5$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "Punkte pro Stunde",
+          "wert": 2.5
+        }
+      ]
+    },
+    {
+      "id": "K0-U0-2b",
+      "kapitel": 0,
+      "typ": "herleitung",
+      "aufgabentext": "Für $S(H,P) = \\frac{4H}{1+0{,}1P}$: Um wie viele Punkte steigt die Punktzahl allgemein mit jeder zusätzlichen Stunde, wenn die Anzahl der Pausen $P$ konstant ist?",
+      "loesung": "$\\frac{\\partial S}{\\partial H} = \\frac{4}{1+0{,}1P}$",
+      "loesungsweg": "$P$ ist konstant, also ist $\\frac{4}{1+0{,}1P}$ ein konstanter Faktor vor $H$. Die Ableitung von $c \\cdot H$ nach $H$ ist $c$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K0-U0-2c",
+      "kapitel": 0,
+      "typ": "herleitung",
+      "aufgabentext": "Für $S(H,P) = \\frac{4H}{1+0{,}1P}$: Wie verändert sich die Punktzahl bei konstanten Stunden $H$, wenn die Pausen leicht erhöht werden? Warum hängt das Ergebnis von $P$ ab?",
+      "loesung": "$\\frac{\\partial S}{\\partial P} = -\\frac{0{,}4H}{(1+0{,}1P)^2}$. Mit mehr Pausen wird der Nenner größer, also hat jede weitere Pause einen kleineren (negativen) Effekt.",
+      "loesungsweg": "Umschreiben: $S = 4H(1+0{,}1P)^{-1}$. Kettenregel: $\\frac{\\partial S}{\\partial P} = 4H \\cdot (-1)(1+0{,}1P)^{-2} \\cdot 0{,}1 = -\\frac{0{,}4H}{(1+0{,}1P)^2}$. Weil $P$ im Nenner quadratisch steht, wird der Betrag der Ableitung mit wachsendem $P$ kleiner. In H ist die Funktion dagegen linear, daher ist dort der Effekt konstant.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K0-U0-3a",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Lösen Sie $\\max_{x_1,x_2} u(x_1,x_2) = x_1^{1/2} x_2^{1/2}$ unter der Nebenbedingung $x_1 + 2x_2 = 16$.",
+      "loesung": "$x_1 = 8$, $x_2 = 4$",
+      "loesungsweg": "$\\mathcal{L} = x_1^{1/2}x_2^{1/2} + \\lambda(x_1 + 2x_2 - 16)$.\nI: $\\frac{1}{2}x_1^{-1/2}x_2^{1/2} + \\lambda = 0$\nII: $\\frac{1}{2}x_1^{1/2}x_2^{-1/2} + 2\\lambda = 0$\nIII: $x_1 + 2x_2 - 16 = 0$\nI/II: $\\frac{x_2}{x_1} = \\frac{1}{2} \\Rightarrow x_2 = \\frac{x_1}{2}$. In III: $2x_1 = 16 \\Rightarrow x_1 = 8$, $x_2 = 4$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 8
+        },
+        {
+          "label": "x_2",
+          "wert": 4
+        }
+      ]
+    },
+    {
+      "id": "K0-U0-3b",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Lösen Sie $\\max_{x_1,x_2} u(x_1,x_2) = x_1 + \\sqrt{x_2}$ unter der Nebenbedingung $x_1 + 2x_2 = 16$.",
+      "loesung": "$x_1 = 15{,}875$, $x_2 = \\frac{1}{16} = 0{,}0625$",
+      "loesungsweg": "$\\mathcal{L} = x_1 + \\sqrt{x_2} + \\lambda(x_1 + 2x_2 - 16)$.\nI: $1 + \\lambda = 0 \\Rightarrow \\lambda = -1$\nII: $\\frac{1}{2\\sqrt{x_2}} + 2\\lambda = 0 \\Rightarrow \\frac{1}{2\\sqrt{x_2}} = 2 \\Rightarrow \\sqrt{x_2} = \\frac{1}{4} \\Rightarrow x_2 = \\frac{1}{16}$\nIII: $x_1 = 16 - \\frac{2}{16} = 15{,}875$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 3
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 15.875
+        },
+        {
+          "label": "x_2",
+          "wert": 0.0625
+        }
+      ]
+    },
+    {
+      "id": "K0-X-01",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Gegeben $u(x_1,x_2) = x_1^{1/2}x_2^{1/2}$. Berechnen Sie die beiden Grenznutzen $\\frac{\\partial u}{\\partial x_1}$ und $\\frac{\\partial u}{\\partial x_2}$ im Punkt $(x_1,x_2) = (4,9)$.",
+      "loesung": "$\\frac{\\partial u}{\\partial x_1} = 0{,}75$, $\\frac{\\partial u}{\\partial x_2} = \\frac{1}{3} \\approx 0{,}333$",
+      "loesungsweg": "$\\frac{\\partial u}{\\partial x_1} = \\frac{1}{2}x_1^{-1/2}x_2^{1/2} = \\frac{1}{2}\\cdot\\frac{3}{2} = 0{,}75$.\n$\\frac{\\partial u}{\\partial x_2} = \\frac{1}{2}x_1^{1/2}x_2^{-1/2} = \\frac{1}{2}\\cdot\\frac{2}{3} = \\frac{1}{3}$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 1
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "∂u/∂x_1",
+          "wert": 0.75
+        },
+        {
+          "label": "∂u/∂x_2",
+          "wert": 0.3333
+        }
+      ]
+    },
+    {
+      "id": "K0-X-02",
+      "kapitel": 0,
+      "typ": "rechnen",
+      "aufgabentext": "Lösen Sie mit der Lagrange-Methode: $\\max u(x_1,x_2) = x_1 x_2$ unter der Nebenbedingung $2x_1 + 4x_2 = 40$.",
+      "loesung": "$x_1 = 10$, $x_2 = 5$",
+      "loesungsweg": "$\\mathcal{L} = x_1x_2 - \\lambda(2x_1 + 4x_2 - 40)$.\nI: $x_2 = 2\\lambda$\nII: $x_1 = 4\\lambda$\nIII: $2x_1 + 4x_2 = 40$\nI/II: $\\frac{x_2}{x_1} = \\frac{1}{2} \\Rightarrow x_1 = 2x_2$. In III: $4x_2 + 4x_2 = 40 \\Rightarrow x_2 = 5$, $x_1 = 10$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 0 Lösung.pdf",
+        "seite": 2
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 10
+        },
+        {
+          "label": "x_2",
+          "wert": 5
+        }
+      ]
+    },
+    {
+      "id": "K1-U1-1a",
+      "kapitel": 1,
+      "typ": "rechnen",
+      "aufgabentext": "Aus den Grafiken der Übung lassen sich folgende Funktionen ablesen: Nachfrage $x_N = 10 - p$, Angebot $x_A = p$ (Preis in €). Wie viele Einheiten werden bei $p = 8$, $p = 5$ und $p = 2$ nachgefragt bzw. angeboten?",
+      "loesung": "$p=8$: $x_N = 2$, $x_A = 8$; $p=5$: $x_N = 5$, $x_A = 5$; $p=2$: $x_N = 8$, $x_A = 2$",
+      "loesungsweg": "Preis jeweils einsetzen: $x_N = 10 - p$ und $x_A = p$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 1
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_N bei p=8",
+          "wert": 2
+        },
+        {
+          "label": "x_A bei p=8",
+          "wert": 8
+        },
+        {
+          "label": "x_N bei p=5",
+          "wert": 5
+        },
+        {
+          "label": "x_A bei p=5",
+          "wert": 5
+        },
+        {
+          "label": "x_N bei p=2",
+          "wert": 8
+        },
+        {
+          "label": "x_A bei p=2",
+          "wert": 2
+        }
+      ]
+    },
+    {
+      "id": "K1-U1-1b",
+      "kapitel": 1,
+      "typ": "rechnen",
+      "aufgabentext": "Nachfrage $x_N = 10 - p$, Angebot $x_A = p$. Der Marktpreis liegt bei 7 €. Ist der Markt im Gleichgewicht? Bestimmen Sie Gleichgewichtspreis, Gleichgewichtsmenge und das Überschussangebot bei $p = 7$.",
+      "loesung": "Nein. Gleichgewicht: $p^* = 5$, $x^* = 5$. Bei $p = 7$ Überschussangebot von $7 - 3 = 4$.",
+      "loesungsweg": "Gleichgewicht: $10 - p = p \\Rightarrow p^* = 5$, $x^* = 5$. Bei $p = 7$: $x_A = 7$, $x_N = 3$. Es wird mehr angeboten als nachgefragt, Überschussangebot $= 4$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 1
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "p*",
+          "wert": 5
+        },
+        {
+          "label": "x*",
+          "wert": 5
+        },
+        {
+          "label": "Überschussangebot bei p=7",
+          "wert": 4
+        }
+      ]
+    },
+    {
+      "id": "K1-U1-2a",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Zeigen Sie mit Hilfe eines Angebots- und Nachfragediagramms die Auswirkungen eines Höchstpreises auf den Markt. (Beschreiben Sie das Diagramm in Worten.)",
+      "loesung": "Zwei Fälle: (1) Höchstpreis $p_H \\geq p^*$: nicht bindend, keine Wirkung. (2) $p_H < p^*$: Nachfrager wollen $q_1^+$, Anbieter liefern nur $q_1$. Gehandelt wird $q_1$, es entsteht eine Überschussnachfrage $q_1^+ - q_1$.",
+      "loesungsweg": "Diagramm: fallende Nachfrage, steigendes Angebot, Schnittpunkt $p^*$. Waagerechte Linie bei $p_H$ unterhalb von $p^*$ einzeichnen. Am Angebot $q_1$ ablesen, an der Nachfrage $q_1^+$. Die Lücke ist die Überschussnachfrage.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-2b",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Im Zweiten Weltkrieg wurden in Großbritannien Höchstpreise für Brot verordnet. Nennen Sie mögliche Nutzen und Probleme einer solchen Maßnahme.",
+      "loesung": "Ziel: Brot bleibt bezahlbar. Probleme: Schwarzmarkt (es gibt Käufer mit höherer Zahlungsbereitschaft und Verkäufer, die über $p_1$ verkaufen würden), Überwachungsaufwand, unklare Zuteilung, Warteschlangen. Durch die Wartezeit wird das Gut effektiv teurer.",
+      "loesungsweg": "Kernpunkte: Überschussnachfrage → (1) Schwarzmarkt, (2) Staat muss Handel überwachen, (3) Zuteilungsproblem / Schlangestehen, (4) Zeitkosten erhöhen den effektiven Preis.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-3a",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Zeigen Sie mit Hilfe eines Angebots- und Nachfragediagramms die Auswirkung eines Mindestpreises auf den Markt. (Beschreiben Sie das Diagramm in Worten.)",
+      "loesung": "Zwei Fälle: (1) $p_M \\leq p^*$: nicht bindend. (2) $p_M > p^*$: Anbieter wollen $q_2^+$ verkaufen, Nachfrager kaufen nur $q_2$. Es entsteht ein Überschussangebot $q_2^+ - q_2$.",
+      "loesungsweg": "Diagramm: waagerechte Linie bei $p_M$ oberhalb von $p^*$. An der Nachfrage $q_2$ ablesen, am Angebot $q_2^+$. Die Lücke ist das Überschussangebot.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 3
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-3b",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Mindestpreise für Agrarprodukte sind ein Standardinstrument der Agrarpolitik. Welchen Zweck verfolgt man damit? Wer trägt die Kosten?",
+      "loesung": "Zweck: Einkommen der Landwirte erhöhen. Der Staat kauft die Überschussmenge zum Mindestpreis auf. Kosten: Steuerzahler zahlen $p_2(q_2^+ - q_2)$; Konsumenten zahlen den höheren Preis.",
+      "loesungsweg": "Kernpunkte: (1) Ziel Produzenteneinkommen, (2) staatlicher Aufkauf des Überschusses, (3) direkte Kosten für Steuerzahler, (4) indirekte Kosten für Konsumenten durch höheren Preis.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 3
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-4ab",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Markt für Sonnenblumenöl: Wie wirkt es sich aus, wenn (a) eine Studie zeigt, dass Sonnenblumenöl gesünder ist als gedacht, (b) eine Studie zeigt, dass es ungesünder ist als gedacht?",
+      "loesung": "(a) Nachfrage steigt (Kurve nach rechts): Preis und Menge steigen. (b) Nachfrage sinkt (Kurve nach links): Preis und Menge sinken.",
+      "loesungsweg": "Eine Studie ändert die Zahlungsbereitschaft, also verschiebt sich die Nachfragekurve. Das Angebot bleibt gleich. Neuer Schnittpunkt entlang der Angebotskurve.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 3
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-4c",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Markt für Sonnenblumenöl: Wie wirkt es sich aus, wenn Dünger teurer wird?",
+      "loesung": "Dünger ist ein Produktionsfaktor, die Kosten steigen, das Angebot sinkt (Kurve nach links). Ceteris paribus steigt der Gleichgewichtspreis, die Gleichgewichtsmenge sinkt.",
+      "loesungsweg": "Kostenänderung → Angebotskurve verschiebt sich. Nachfrage unverändert. Neuer Schnittpunkt: höherer Preis, geringere Menge.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 4
+      },
+      "check": false
+    },
+    {
+      "id": "K1-U1-4d",
+      "kapitel": 1,
+      "typ": "multiple_choice",
+      "aufgabentext": "Markt für Sonnenblumenöl: Olivenöl wird teurer. Was passiert im Markt für Sonnenblumenöl?",
+      "loesung": "Nachfrage steigt: Preis und Menge steigen.",
+      "loesungsweg": "Olivenöl ist ein Substitut. Wird es teurer, weichen Konsumenten auf Sonnenblumenöl aus, die Nachfragekurve verschiebt sich nach rechts.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 4
+      },
+      "check": false,
+      "optionen": [
+        "Nachfrage steigt: Preis und Menge steigen.",
+        "Angebot sinkt: Preis steigt, Menge sinkt.",
+        "Nachfrage sinkt: Preis und Menge sinken.",
+        "Keine Änderung, da anderer Markt."
+      ]
+    },
+    {
+      "id": "K1-U1-4e",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Markt für Sonnenblumenöl: Wie wirkt es sich aus, wenn das Einkommen der Konsumenten steigt?",
+      "loesung": "Nachfrage steigt (Kurve nach rechts): Preis und Menge steigen.",
+      "loesungsweg": "Mehr Einkommen → höhere Zahlungsbereitschaft (bei einem normalen Gut) → Nachfragekurve nach rechts.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 1 Lösung.pdf",
+        "seite": 4
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-01",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Nennen und erklären Sie die zwei leitenden methodischen Prinzipien der Mikroökonomik.",
+      "loesung": "(1) Optimierungsprinzip: Gegeben ihre Möglichkeiten und Information wählt jede Akteurin das, was sie bevorzugt. (2) Gleichgewichtsprinzip: Gegeben was alle anderen tun, möchte niemand seine Entscheidung ändern.",
+      "loesungsweg": "Optimierung betrifft Einzelne, Gleichgewicht das Zusammenspiel.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 5
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-02",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Was ist ein Vorbehaltspreis? Wie hoch ist die Konsumentenrente eines Mieters $i$ mit Vorbehaltspreis $p_i$, der zur Miete $p$ eine Wohnung mietet?",
+      "loesung": "Vorbehaltspreis = maximale Zahlungsbereitschaft einer Person für ein Gut. Konsumentenrente $= p_i - p$.",
+      "loesungsweg": "Bei $p < p_i$ fragt $i$ nach, bei $p > p_i$ nicht, bei $p = p_i$ ist $i$ indifferent.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 12
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-03",
+      "kapitel": 1,
+      "typ": "rechnen",
+      "aufgabentext": "Acht Mieter haben die Vorbehaltspreise 500, 480, 460, 450, 420, 390, 370 und 350 €. (a) Wie viele Wohnungen im inneren Ring werden bei einer Miete von 455 € nachgefragt? (b) Wie hoch ist dann die Konsumentenrente des Mieters mit Vorbehaltspreis 480 €?",
+      "loesung": "(a) 3 Wohnungen, (b) 25 €",
+      "loesungsweg": "(a) Nur Mieter mit $p_i > 455$ fragen nach: 500, 480, 460, also 3. (b) Rente $= 480 - 455 = 25$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 13
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "Nachfrage",
+          "wert": 3
+        },
+        {
+          "label": "Rente",
+          "wert": 25
+        }
+      ]
+    },
+    {
+      "id": "K1-VL-04",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Warum stellt sich im Wohnungsmarkt-Modell der Gleichgewichtspreis $p^*$ mit $D(p^*) = S(p^*)$ ein? Argumentieren Sie mit den „Marktkräften“ für $p > p^*$ und $p < p^*$.",
+      "loesung": "$p > p^*$: $D(p) < Q^*$, Wohnungen stehen leer, Vermieter und Mieter haben Anreiz, sich auf einen niedrigeren Preis zu einigen. $p < p^*$: $D(p) > Q^*$, Mieter gehen leer aus, obwohl sie mehr zahlen würden; der Preis steigt.",
+      "loesungsweg": "Überschussangebot drückt den Preis, Überschussnachfrage treibt ihn. Partielles Gleichgewicht, weil ein Markt isoliert betrachtet wird.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 17
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-05",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Definieren Sie Pareto-Effizienz. Warum ist die Allokation im Gleichgewicht des Wohnungsmarktes Pareto-effizient, und welche Annahmen braucht diese Schlussfolgerung?",
+      "loesung": "Pareto-effizient: Keine andere Allokation stellt mindestens eine Person besser, ohne jemanden schlechter zu stellen. Im Gleichgewicht bekommen die $Q^*$ Mieter mit den höchsten Vorbehaltspreisen die Wohnungen, es gibt keine Tauschgewinne mehr. Annahmen: Vorbehaltspreise zeigen Wohlfahrt perfekt an, keine Entscheidungsfehler, keine Fehlinformation, keine negativen externen Effekte.",
+      "loesungsweg": "Definition → Begründung (keine Tauschgewinne) → Annahmen.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 21
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-06",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Komparative Statik im Wohnungsmarkt: Das Wohnungsangebot im inneren Ring wird erhöht. Was passiert mit Miete und Menge?",
+      "loesung": "Die senkrechte Angebotskurve verschiebt sich nach rechts ($Q^* \\to Q^{**}$). Die Gleichgewichtsmiete sinkt ($p^* \\to p^{**}$), die vermietete Menge steigt.",
+      "loesungsweg": "Exogen: Angebot. Endogen: Preis. Neuer Schnittpunkt weiter unten auf der fallenden Nachfragekurve.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 24
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-07",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Komparative Statik im Wohnungsmarkt: Die Innenstadt wird aufgewertet (z. B. neue Parkanlagen). Was passiert mit Miete und Menge?",
+      "loesung": "Der innere Ring wird attraktiver, die Vorbehaltspreise steigen, die Nachfragekurve verschiebt sich nach rechts. Die Miete steigt, die Menge bleibt $Q^*$ (senkrechtes Angebot).",
+      "loesungsweg": "Nachfrageverschiebung bei vollkommen unelastischem Angebot wirkt nur auf den Preis.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 25
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-08",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Komparative Statik im Wohnungsmarkt: Für den inneren Ring wird eine Mietenkontrolle mit $p_{max} < p^*$ eingeführt. Welche Folgen hat das? Ist das Ergebnis Pareto-effizient?",
+      "loesung": "Es entsteht eine Überschussnachfrage $D(p_{max}) > S(p_{max})$. Wer innen wohnt, ist nicht mehr durch den Preis bestimmt; wahrscheinlich wohnt dort auch jemand mit Vorbehaltspreis kleiner $p^*$. Das ist Pareto-ineffizient.",
+      "loesungsweg": "Ineffizient, weil ein Tausch zwischen einem Innen-Mieter mit niedrigem und einem Außen-Mieter mit hohem Vorbehaltspreis beide besserstellen könnte.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 26
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-09",
+      "kapitel": 1,
+      "typ": "freitext",
+      "aufgabentext": "Komparative Statik im Wohnungsmarkt: Vermieter im inneren Ring müssen pro Wohnung eine Steuer $t$ zahlen. Was passiert mit Miete, Menge und Renten? Warum gibt es hier keine Verzerrung?",
+      "loesung": "Miete $p^*$ und Menge $Q^*$ bleiben gleich. Vermieter erhalten netto nur $p^* - t$. Es ist eine reine Umverteilung von den Vermietern zum Staat (Staatseinnahmen $t \\cdot Q^*$). Keine Verzerrung, weil keine Produktion stattfindet: Das Angebot ist fix.",
+      "loesungsweg": "Senkrechtes Angebot → Steuer kann nicht überwälzt werden. Rentenvergleich: Mieterrente unverändert, Vermieterrente sinkt um die Staatseinnahmen.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 27
+      },
+      "check": false
+    },
+    {
+      "id": "K1-VL-10",
+      "kapitel": 1,
+      "typ": "rechnen",
+      "aufgabentext": "Im Wohnungsmarkt-Modell gibt es $Q^* = 100$ Wohnungen im inneren Ring, die Gleichgewichtsmiete ist $p^* = 800$ €. Es wird eine Steuer von $t = 100$ € pro Wohnung für die Vermieter eingeführt. Wie hoch sind die Nettomiete pro Wohnung und die gesamten Staatseinnahmen?",
+      "loesung": "Nettomiete $700$ €, Staatseinnahmen $10\\,000$ €",
+      "loesungsweg": "Miete bleibt $800$ (senkrechtes Angebot). Netto: $800 - 100 = 700$. Staatseinnahmen: $100 \\cdot 100 = 10\\,000$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 29
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "Nettomiete",
+          "wert": 700
+        },
+        {
+          "label": "Staatseinnahmen",
+          "wert": 10000
+        }
+      ]
+    },
+    {
+      "id": "K1-VL-11",
+      "kapitel": 1,
+      "typ": "multiple_choice",
+      "aufgabentext": "Was versteht man unter komparativer Statik?",
+      "loesung": "Den Vergleich zweier Gleichgewichtssituationen ohne Betrachtung der Übergangsdynamik.",
+      "loesungsweg": "Komparative Statik fragt, wie sich das Gleichgewicht nach einer exogenen Änderung unterscheidet; der Weg dorthin wird nicht betrachtet.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 23
+      },
+      "check": false,
+      "optionen": [
+        "Den Vergleich zweier Gleichgewichtssituationen ohne Betrachtung der Übergangsdynamik.",
+        "Die Analyse, wie sich ein Markt Schritt für Schritt einem Gleichgewicht nähert.",
+        "Den Vergleich von Angebot und Nachfrage bei einem festen Preis.",
+        "Die Messung von Konsumenten- und Produzentenrente."
+      ]
+    },
+    {
+      "id": "K1-VL-12",
+      "kapitel": 1,
+      "typ": "rechnen",
+      "aufgabentext": "Die (glatte) Nachfrage nach Wohnungen im inneren Ring sei $D(p) = 1000 - p$. Es gibt $Q^* = 400$ Wohnungen, Produktionskosten sind null. Bestimmen Sie die Gleichgewichtsmiete $p^*$, die Summe der Konsumentenrenten und die Summe der Produzentenrenten.",
+      "loesung": "$p^* = 600$, Konsumentenrente $= 80\\,000$, Produzentenrente $= 240\\,000$",
+      "loesungsweg": "$D(p^*) = Q^*$: $1000 - p^* = 400 \\Rightarrow p^* = 600$.\nKonsumentenrente: Dreieck zwischen Nachfragekurve und $p^*$: $\\frac{1}{2}\\cdot 400 \\cdot (1000 - 600) = 80\\,000$.\nProduzentenrente: $p^* \\cdot Q^* - 0 = 600 \\cdot 400 = 240\\,000$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_1_handout.pdf",
+        "seite": 22
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "p*",
+          "wert": 600
+        },
+        {
+          "label": "Konsumentenrente",
+          "wert": 80000
+        },
+        {
+          "label": "Produzentenrente",
+          "wert": 240000
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-1a",
+      "kapitel": 2,
+      "typ": "herleitung",
+      "aufgabentext": "Kristin hat monatlich $m = 80$ € für Mittagessen. Mensa: $p_1 = 2$ €, Falafel: $p_2 = 4$ €. Geben Sie die Gleichung der Budgetgeraden und einen Ausdruck für die Budgetmenge an.",
+      "loesung": "Budgetgerade: $2x_1 + 4x_2 = 80$. Budgetmenge: $\\{(x_1,x_2) \\in \\mathbb{R}^2_+ : 2x_1 + 4x_2 \\leq 80\\}$",
+      "loesungsweg": "Allgemein: Budgetgerade $p_1x_1 + p_2x_2 = m$, Budgetmenge $p_1x_1 + p_2x_2 \\leq m$ mit $x_1, x_2 \\geq 0$. Werte einsetzen.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false
+    },
+    {
+      "id": "K2-U2-1b",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Budgetgerade $2x_1 + 4x_2 = 80$. Bestimmen Sie die Achsenabschnitte (maximale Menge Gut 1 und Gut 2) und die Steigung der Budgetgeraden, wenn $x_1$ auf der horizontalen Achse liegt.",
+      "loesung": "$x_1^{max} = 40$, $x_2^{max} = 20$, Steigung $-0{,}5$",
+      "loesungsweg": "$x_1^{max} = m/p_1 = 80/2 = 40$, $x_2^{max} = m/p_2 = 80/4 = 20$. Steigung $= -p_1/p_2 = -2/4 = -0{,}5$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 1
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 40
+        },
+        {
+          "label": "x_2 max",
+          "wert": 20
+        },
+        {
+          "label": "Steigung",
+          "wert": -0.5
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-1c-i",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Ausgangslage: $m = 80$, $p_1 = 2$, $p_2 = 4$. Kristins Einkommen steigt auf $m' = 120$. Wie lauten die neuen Achsenabschnitte? Wie verändert sich die Budgetgerade?",
+      "loesung": "$x_1^{max} = 60$, $x_2^{max} = 30$. Parallelverschiebung nach rechts oben.",
+      "loesungsweg": "$120/2 = 60$, $120/4 = 30$. Steigung bleibt $-p_1/p_2 = -0{,}5$, also parallel.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 60
+        },
+        {
+          "label": "x_2 max",
+          "wert": 30
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-1c-ii",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Ausgangslage: $m = 80$, $p_1 = 2$, $p_2 = 4$. Der Mensapreis steigt auf $p_1' = 4$. Wie lauten die neuen Achsenabschnitte und die neue Steigung?",
+      "loesung": "$x_1^{max} = 20$, $x_2^{max} = 20$, Steigung $-1$ (steiler)",
+      "loesungsweg": "$80/4 = 20$ für Gut 1, Gut 2 unverändert $80/4 = 20$. Steigung $-4/4 = -1$. Die Budgetgerade dreht sich um den Achsenabschnitt von Gut 2 nach innen.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 20
+        },
+        {
+          "label": "x_2 max",
+          "wert": 20
+        },
+        {
+          "label": "Steigung",
+          "wert": -1
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-1c-iii",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Ausgangslage: $m = 80$, $p_1 = 2$, $p_2 = 4$. Der Falafelpreis sinkt auf $p_2' = 2$. Wie lauten die neuen Achsenabschnitte und die neue Steigung?",
+      "loesung": "$x_1^{max} = 40$, $x_2^{max} = 40$, Steigung $-1$ (steiler)",
+      "loesungsweg": "Gut 1 unverändert $80/2 = 40$. Gut 2: $80/2 = 40$. Steigung $-2/2 = -1$. Die Budgetgerade dreht sich um den Achsenabschnitt von Gut 1 nach außen.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 40
+        },
+        {
+          "label": "x_2 max",
+          "wert": 40
+        },
+        {
+          "label": "Steigung",
+          "wert": -1
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-1c-iv",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Ausgangslage: $m = 80$, $p_1 = 2$, $p_2 = 4$. Preise und Einkommen verdoppeln sich ($m = 160$, $p_1 = 4$, $p_2 = 8$). Wie lauten die Achsenabschnitte?",
+      "loesung": "$x_1^{max} = 40$, $x_2^{max} = 20$: Budgetgerade identisch zur Ausgangslage",
+      "loesungsweg": "$160/4 = 40$, $160/8 = 20$. Relative Preise unverändert ($4/8 = 2/4$), also gleiche Budgetgerade.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 40
+        },
+        {
+          "label": "x_2 max",
+          "wert": 20
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-2a",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Sie geben 9 € für Snacks aus. Nüsse kosten 3 €, ein Schokoriegel 1,50 €. Wie hoch sind die Opportunitätskosten eines Päckchens Nüsse (in Schokoriegeln) und was bedeuten sie?",
+      "loesung": "$2$ Schokoriegel: Für ein Päckchen Nüsse mehr muss man auf zwei Schokoriegel verzichten.",
+      "loesungsweg": "$OC = \\frac{p_1}{p_2} = \\frac{3}{1{,}5} = 2$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "Opportunitätskosten",
+          "wert": 2
+        }
+      ]
+    },
+    {
+      "id": "K2-U2-2b",
+      "kapitel": 2,
+      "typ": "multiple_choice",
+      "aufgabentext": "Was sind die Opportunitätskosten von Gut 1 grafisch, wenn Gut 1 auf der horizontalen Achse liegt?",
+      "loesung": "Die negative Steigung der Budgetgeraden.",
+      "loesungsweg": "Die Budgetgerade hat Steigung $-p_1/p_2$. Die OC von Gut 1 sind $p_1/p_2$, also die negative Steigung.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 2
+      },
+      "check": false,
+      "optionen": [
+        "Die negative Steigung der Budgetgeraden.",
+        "Der Achsenabschnitt der Budgetgeraden auf der vertikalen Achse.",
+        "Die Fläche unter der Budgetgeraden.",
+        "Der Kehrwert des Achsenabschnitts von Gut 1."
+      ]
+    },
+    {
+      "id": "K2-U2-2c",
+      "kapitel": 2,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie einen allgemeinen Ausdruck für die Mengenänderung $\\delta$ von Gut 2 her, wenn der Konsum von Gut 1 um eine Einheit steigt, das ganze Budget verbraucht wird und die Preise konstant bleiben. Ausgangsgleichung: $m = p_1(x_1+1) + p_2(x_2+\\delta)$.",
+      "loesung": "$\\delta = -\\frac{p_1}{p_2}$",
+      "loesungsweg": "$m = p_1x_1 + p_1 + p_2x_2 + p_2\\delta$. Da $p_1x_1 + p_2x_2 = m$: $0 = p_1 + p_2\\delta \\Rightarrow \\delta = -\\frac{p_1}{p_2}$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "Übung 2 Lösung.pdf",
+        "seite": 3
+      },
+      "check": false
+    },
+    {
+      "id": "K2-VL-01",
+      "kapitel": 2,
+      "typ": "freitext",
+      "aufgabentext": "Definieren Sie Güterbündel, Güterraum und Budgetmenge $B(p_1,p_2,m)$ im 2-Güter-Fall.",
+      "loesung": "Güterbündel $x = (x_1,x_2)$ mit $x_i \\geq 0$. Güterraum $X = \\mathbb{R}^2_+$ (alle Güterbündel). Budgetmenge $B(p_1,p_2,m) = \\{(x_1,x_2) \\in \\mathbb{R}^2_+ \\mid p_1x_1 + p_2x_2 \\leq m\\}$.",
+      "loesungsweg": "Die Budgetmenge enthält alle leistbaren Bündel; die Budgetgerade ist ihr Rand $p_1x_1 + p_2x_2 = m$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 8
+      },
+      "check": false
+    },
+    {
+      "id": "K2-VL-02",
+      "kapitel": 2,
+      "typ": "herleitung",
+      "aufgabentext": "Konni konsumiert das Bündel $x$ auf der Budgetgeraden und möchte eine Einheit mehr von Gut 1. Zeigen Sie, dass sie mindestens $\\Delta = \\frac{p_1}{p_2}$ Einheiten von Gut 2 aufgeben muss.",
+      "loesung": "$\\Delta_{min} = \\frac{p_1}{p_2}$",
+      "loesungsweg": "Neues Bündel muss leistbar sein: $p_1(x_1+1) + p_2(x_2-\\Delta) \\leq m$. Ausmultiplizieren: $p_1x_1 + p_2x_2 + p_1 - p_2\\Delta = m + p_1 - p_2\\Delta \\leq m$. Also $p_1 \\leq p_2\\Delta \\Leftrightarrow \\Delta \\geq \\frac{p_1}{p_2}$. Das minimale $\\Delta$ ist $\\frac{p_1}{p_2}$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 12
+      },
+      "check": false
+    },
+    {
+      "id": "K2-VL-03",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Es gilt $m = 100$, $p_1 = 5$, $p_2 = 10$. Bestimmen Sie die Achsenabschnitte der Budgetgeraden sowie die Opportunitätskosten von Gut 2 (gemessen in Einheiten von Gut 1).",
+      "loesung": "$x_1^{max} = 20$, $x_2^{max} = 10$, $OC_2 = 2$",
+      "loesungsweg": "$x_1^{max} = 100/5 = 20$, $x_2^{max} = 100/10 = 10$. $OC_2 = \\frac{p_2}{p_1} = \\frac{10}{5} = 2$ (negativer Kehrwert der Steigung).",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 14
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 20
+        },
+        {
+          "label": "x_2 max",
+          "wert": 10
+        },
+        {
+          "label": "OC Gut 2",
+          "wert": 2
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-04",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Konni hat $m = 500$, $p_1 = 10$, $p_2 = 20$. Es wird eine Einkommensteuer mit Satz $t = 0{,}2$ eingeführt. Wie lauten die neuen Achsenabschnitte der Budgetgeraden?",
+      "loesung": "$x_1^{max} = 40$, $x_2^{max} = 20$",
+      "loesungsweg": "$p_1x_1 + p_2x_2 = (1-t)m = 0{,}8 \\cdot 500 = 400$. $x_1^{max} = 400/10 = 40$, $x_2^{max} = 400/20 = 20$. Steigung unverändert.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 23
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 40
+        },
+        {
+          "label": "x_2 max",
+          "wert": 20
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-05",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Konni hat $m = 250$, $p_1 = 10$, $p_2 = 20$. Es wird eine Umsatzsteuer (ad valorem auf alle Güter) mit $t = 0{,}25$ eingeführt. Wie lauten die neuen Achsenabschnitte?",
+      "loesung": "$x_1^{max} = 20$, $x_2^{max} = 10$",
+      "loesungsweg": "$(1+t)(p_1x_1 + p_2x_2) = m \\Leftrightarrow p_1x_1 + p_2x_2 = \\frac{250}{1{,}25} = 200$. $x_1^{max} = 200/10 = 20$, $x_2^{max} = 200/20 = 10$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 23
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 20
+        },
+        {
+          "label": "x_2 max",
+          "wert": 10
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-06",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Es gilt $m = 60$, $p_1 = 4$, $p_2 = 5$. Auf Gut 1 wird eine Mengensteuer $t = 2$ pro Einheit erhoben. Bestimmen Sie $x_1^{max}$, $x_2^{max}$ und die Steigung der neuen Budgetgeraden.",
+      "loesung": "$x_1^{max} = 10$, $x_2^{max} = 12$, Steigung $-1{,}2$",
+      "loesungsweg": "$(p_1 + t)x_1 + p_2x_2 = m \\Rightarrow 6x_1 + 5x_2 = 60$. $x_1^{max} = 60/6 = 10$, $x_2^{max} = 60/5 = 12$. Steigung $-6/5 = -1{,}2$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 24
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 10
+        },
+        {
+          "label": "x_2 max",
+          "wert": 12
+        },
+        {
+          "label": "Steigung",
+          "wert": -1.2
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-07",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Es gilt $m = 60$, $p_1 = 4$, $p_2 = 5$. Auf Gut 1 wird eine Wertsteuer (ad valorem) von $t = 0{,}25$ erhoben. Bestimmen Sie $x_1^{max}$ und die Steigung der neuen Budgetgeraden.",
+      "loesung": "$x_1^{max} = 12$, Steigung $-1$",
+      "loesungsweg": "$(1+t)p_1x_1 + p_2x_2 = m \\Rightarrow 5x_1 + 5x_2 = 60$. $x_1^{max} = 12$, Steigung $-5/5 = -1$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 24
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 12
+        },
+        {
+          "label": "Steigung",
+          "wert": -1
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-08",
+      "kapitel": 2,
+      "typ": "multiple_choice",
+      "aufgabentext": "Welche der folgenden Steuern verändert die Steigung der Budgetgeraden?",
+      "loesung": "Eine Mengensteuer auf Gut 1.",
+      "loesungsweg": "Pauschal-, Einkommen- und Umsatzsteuer wirken wie eine Einkommensänderung (Parallelverschiebung). Eine Konsumsteuer auf ein Gut wirkt wie eine Preisänderung dieses Guts und verändert die relativen Preise.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 23
+      },
+      "check": false,
+      "optionen": [
+        "Eine Mengensteuer auf Gut 1.",
+        "Eine Pauschalsteuer (Kopfsteuer).",
+        "Eine Einkommensteuer.",
+        "Eine Umsatzsteuer mit gleichem Satz auf alle Güter."
+      ]
+    },
+    {
+      "id": "K2-VL-09",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Subvention mit Handelsverbot: Konni erhält $k = 5$ Einheiten von Gut 1 umsonst (Weiterverkauf verboten). Außerdem hat sie $m = 40$, $p_1 = 4$, $p_2 = 2$. Wie viel von Gut 1 kann sie maximal konsumieren, und wie viel von Gut 2 kann sie maximal konsumieren, wenn sie genau $x_1 = 5$ konsumiert?",
+      "loesung": "$x_1^{max} = 15$; bei $x_1 = 5$: $x_2 = 20$",
+      "loesungsweg": "Budget: $p_1\\max\\{x_1 - k, 0\\} + p_2x_2 = m$. Maximal $x_1 = k + m/p_1 = 5 + 10 = 15$. Für $x_1 \\leq 5$ kostet Gut 1 nichts, also $x_2 = m/p_2 = 20$. Die neue „Budgetgerade“ ist geknickt: waagerecht bis $x_1 = 5$, danach mit Steigung $-2$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 26
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max",
+          "wert": 15
+        },
+        {
+          "label": "x_2 bei x_1=5",
+          "wert": 20
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-10",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Rationierung: Konni darf höchstens $k = 6$ Einheiten von Gut 1 konsumieren. Es gilt $m = 40$, $p_1 = 4$, $p_2 = 2$. Wie viel von Gut 1 könnte sie ohne Rationierung maximal kaufen, und wie viel von Gut 2 kann sie höchstens kaufen, wenn sie die erlaubten 6 Einheiten von Gut 1 kauft?",
+      "loesung": "Ohne Rationierung $x_1^{max} = 10$; bei $x_1 = 6$: $x_2 = 8$",
+      "loesungsweg": "Ohne Rationierung: $m/p_1 = 40/4 = 10$. Mit $x_1 = 6$: $x_2 = (40 - 4\\cdot 6)/2 = 8$. Die Budgetmenge wird bei $x_1 = 6$ senkrecht abgeschnitten.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 27
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1 max ohne Rationierung",
+          "wert": 10
+        },
+        {
+          "label": "x_2 bei x_1=6",
+          "wert": 8
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-11",
+      "kapitel": 2,
+      "typ": "herleitung",
+      "aufgabentext": "Alle Preise und das Einkommen steigen durch Inflation mit Rate $\\pi$. Zeigen Sie, dass sich die Budgetmenge nicht verändert.",
+      "loesung": "$(1+\\pi)p_1x_1 + (1+\\pi)p_2x_2 \\leq (1+\\pi)m \\Leftrightarrow p_1x_1 + p_2x_2 \\leq m$",
+      "loesungsweg": "Neue Budgetbeschränkung aufschreiben und durch $(1+\\pi) > 0$ teilen. Die Ungleichung bleibt gleich, also sind Budgetgerade und Budgetmenge unverändert.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 28
+      },
+      "check": false
+    },
+    {
+      "id": "K2-VL-12",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Es gilt $p_1 = 6$, $p_2 = 3$, $m = 60$. Normalisieren Sie mit Gut 2 als Numéraire: Wie lauten der normierte Preis $p_1'$ und das normierte Einkommen $m'$?",
+      "loesung": "$p_1' = 2$, $m' = 20$",
+      "loesungsweg": "Durch $p_2$ teilen: $p_1' = p_1/p_2 = 6/3 = 2$, $m' = m/p_2 = 60/3 = 20$. Budgetgerade: $2x_1 + x_2 = 20$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 29
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "p_1'",
+          "wert": 2
+        },
+        {
+          "label": "m'",
+          "wert": 20
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-13",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Konni hat kein Geldeinkommen, sondern die Anfangsausstattung $\\omega = (10, 20)$. Die Preise sind $p_1 = 2$, $p_2 = 1$. Wie hoch ist ihr Einkommen $m$ und welche Mengen kann sie maximal von Gut 1 bzw. Gut 2 konsumieren?",
+      "loesung": "$m = 40$, $x_1^{max} = 20$, $x_2^{max} = 40$",
+      "loesungsweg": "$m = p_1\\omega_1 + p_2\\omega_2 = 2\\cdot 10 + 1\\cdot 20 = 40$. $x_1^{max} = 40/2 = 20$, $x_2^{max} = 40/1 = 40$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 31
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "m",
+          "wert": 40
+        },
+        {
+          "label": "x_1 max",
+          "wert": 20
+        },
+        {
+          "label": "x_2 max",
+          "wert": 40
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-14",
+      "kapitel": 2,
+      "typ": "rechnen",
+      "aufgabentext": "Anfangsausstattung $\\omega = (10, 20)$, $p_2 = 1$. Der Preis von Gut 1 steigt von $2$ auf $p_1' = 3$. Wie hoch ist das neue Einkommen $m'$, und welche Mengen kann Konni nun maximal von Gut 1 bzw. Gut 2 konsumieren?",
+      "loesung": "$m' = 50$, $x_1^{max} \\approx 16{,}67$, $x_2^{max} = 50$",
+      "loesungsweg": "$m' = 3\\cdot 10 + 1\\cdot 20 = 50$. $x_1^{max} = 50/3 \\approx 16{,}67$, $x_2^{max} = 50$. Die Budgetgerade dreht sich um $\\omega$, das immer leistbar bleibt.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 33
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "m'",
+          "wert": 50
+        },
+        {
+          "label": "x_1 max",
+          "wert": 16.667
+        },
+        {
+          "label": "x_2 max",
+          "wert": 50
+        }
+      ]
+    },
+    {
+      "id": "K2-VL-15",
+      "kapitel": 2,
+      "typ": "freitext",
+      "aufgabentext": "Konni besitzt eine Anfangsausstattung $\\omega$ statt eines Geldeinkommens. Wie verändert sich ihre Budgetgerade, wenn der Preis von Gut 1 steigt? Worin liegt der Unterschied zum Fall mit festem Geldeinkommen?",
+      "loesung": "Die Budgetgerade dreht sich um den Ausstattungspunkt $\\omega$ (der bleibt immer leistbar) und wird steiler. Unterschied: Das Einkommen $m = p_1\\omega_1 + p_2\\omega_2$ hängt von den Preisen ab. Bei festem $m$ dreht sich die BG dagegen um den Achsenabschnitt von Gut 2.",
+      "loesungsweg": "Kernpunkte: (1) Drehpunkt $\\omega$, (2) Steigung $-p_1'/p_2$, (3) $m$ steigt mit, (4) $x_2^{max}$ steigt, $x_1^{max}$ sinkt.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 33
+      },
+      "check": true
+    },
+    {
+      "id": "K2-VL-16",
+      "kapitel": 2,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie: Werden beide Preise mit demselben Faktor $t > 0$ multipliziert, entspricht das einer Änderung des Einkommens von $m$ auf $m/t$.",
+      "loesung": "$tp_1x_1 + tp_2x_2 = m \\Leftrightarrow p_1x_1 + p_2x_2 = \\frac{m}{t}$",
+      "loesungsweg": "Durch $t$ teilen. Die relativen Preise $\\frac{tp_1}{tp_2} = \\frac{p_1}{p_2}$ und damit die Steigung bleiben gleich; nur der Achsenabschnitt verschiebt sich.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_2_handout.pdf",
+        "seite": 21
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-1a",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Wie lauten die Definitionen von Vollständigkeit und Transitivität einer Präferenzrelation $\\succsim$?",
+      "loesung": "Vollständigkeit: Für zwei beliebige Bündel $a$, $b$ gilt $a \\succsim b$ oder $b \\succsim a$ (oder beides). Transitivität: Für drei beliebige Bündel $a$, $b$, $c$ gilt: Wenn $a \\succsim b$ und $b \\succsim c$, dann $a \\succsim c$.",
+      "loesungsweg": "Vollständigkeit: jedes Paar ist vergleichbar. Transitivität: innere Konsistenz, keine Kreise.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 1
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-1b",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Konni gibt Ihnen für den Obstkauf folgende Regel: Apfel $\\succ$ Banane, Apfel $\\succ$ Kiwi. Auf dem Markt gibt es nur Banane und Kiwi. Können Sie entscheiden, was Sie kaufen sollen? Ist die Regel vollständig?",
+      "loesung": "Nein. Die Regel ordnet Banane und Kiwi nicht zueinander, sie ist nicht vollständig.",
+      "loesungsweg": "Es könnte Banane $\\succ$ Kiwi gelten, genauso aber Kiwi $\\succ$ Banane.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 1
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-1c",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Neue Regel: Apfel $\\succ$ Banane, Banane $\\succ$ Kiwi, Kiwi $\\succ$ Apfel. Es gibt alle drei Obstsorten. Können Sie entscheiden? Ist die Regel transitiv?",
+      "loesung": "Nein. Es entsteht ein Kreis Apfel $\\succ$ Banane $\\succ$ Kiwi $\\succ$ Apfel $\\succ \\dots$ Die Regel ist nicht transitiv.",
+      "loesungsweg": "Transitiv wäre sie z. B. mit Apfel $\\succ$ Kiwi statt Kiwi $\\succ$ Apfel.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-1d",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Regel 3: Banane $\\succ$ Apfel, Banane $\\succ$ Birne, Banane $\\succ$ Kiwi, Apfel $\\sim$ Birne, Apfel $\\succ$ Kiwi, Birne $\\succ$ Kiwi. Handelt es sich um eine Präferenzrelation?",
+      "loesung": "Ja. Vollständig, da jedes Paar verglichen wird. Transitiv, da sich die Ordnung ohne Kreis schreiben lässt: Banane $\\succ$ Apfel $\\sim$ Birne $\\succ$ Kiwi.",
+      "loesungsweg": "Beispiel-Test: Banane $\\succ$ Birne und Birne $\\succ$ Kiwi, also muss Banane $\\succ$ Kiwi gelten. Das ist erfüllt. Für alle Kombinationen analog.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 2
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-1e",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Finden Sie zu Regel 3 (Banane $\\succ$ Apfel $\\sim$ Birne $\\succ$ Kiwi) eine Funktion, die jeder Frucht einen Zahlenwert zuordnet, sodass ein höherer Wert bevorzugt bedeutet. Wie viele solche Funktionen gibt es?",
+      "loesung": "Z. B. $U(\\text{Banane}) = 6$, $U(\\text{Apfel}) = U(\\text{Birne}) = 5$, $U(\\text{Kiwi}) = 4$. Es gibt unendlich viele, z. B. alle Werte mal $k > 0$.",
+      "loesungsweg": "Nur die Reihenfolge zählt (ordinaler Nutzen). Jede Zahlenzuordnung mit derselben Ordnung stellt dieselbe Präferenz dar.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 3
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-2a",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Eine Relation ordnet Konsumbündel so: $(x_1^A, x_2^A) \\succsim (x_1^B, x_2^B)$ genau dann, wenn $(x_1^A)^2x_2^A \\geq (x_1^B)^2x_2^B$. Zeigen Sie, dass dies eine Präferenzrelation ist (vollständig und transitiv).",
+      "loesung": "Vollständig, weil reelle Zahlen immer vergleichbar sind. Transitiv, weil $\\geq$ auf reellen Zahlen transitiv ist.",
+      "loesungsweg": "Vollständig: Für zwei Bündel A, B gilt $(x_1^A)^2x_2^A \\geq (x_1^B)^2x_2^B$ oder umgekehrt, also $A \\succsim B$ oder $B \\succsim A$.\nTransitiv: Aus $A \\succsim B$ und $B \\succsim C$ folgt $(x_1^A)^2x_2^A \\geq (x_1^B)^2x_2^B \\geq (x_1^C)^2x_2^C$, also $(x_1^A)^2x_2^A \\geq (x_1^C)^2x_2^C$ und damit $A \\succsim C$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 4
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-2b",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Nennen Sie eine Nutzenfunktion, die die Präferenzrelation „$(x_1^A, x_2^A) \\succsim (x_1^B, x_2^B) \\Leftrightarrow (x_1^A)^2x_2^A \\geq (x_1^B)^2x_2^B$“ beschreibt.",
+      "loesung": "$U(x_1,x_2) = x_1^2x_2$",
+      "loesungsweg": "Die Relation vergleicht genau die Werte $x_1^2x_2$. Jede positiv monotone Transformation davon wäre ebenfalls richtig.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 4
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-2c",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Nutzenfunktion $U(x_1,x_2) = x_1^2x_2$. Bestimmen Sie die Gleichung der Indifferenzkurve zum Nutzenwert $\\bar{u} = 9$ und berechnen Sie $x_2$ auf dieser Kurve für $x_1 = 1$ und $x_1 = 3$.",
+      "loesung": "$x_2 = \\frac{9}{x_1^2}$; bei $x_1 = 1$: $x_2 = 9$; bei $x_1 = 3$: $x_2 = 1$",
+      "loesungsweg": "$x_1^2x_2 = 9 \\Leftrightarrow x_2 = 9/x_1^2$. Einsetzen: $9/1 = 9$ und $9/9 = 1$. Die Kurve ist fallend und konvex zum Ursprung.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 4
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_2 bei x_1=1",
+          "wert": 9
+        },
+        {
+          "label": "x_2 bei x_1=3",
+          "wert": 1
+        }
+      ]
+    },
+    {
+      "id": "K3-U3-2d",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Berechnen Sie für $U(x_1,x_2) = x_1^2x_2$ die Grenzrate der Substitution (MRS). Was sagt diese aus?",
+      "loesung": "$MRS = \\frac{2x_2}{x_1}$. Sie gibt an, wie viel von Gut 2 der Konsument für eine zusätzliche Einheit Gut 1 höchstens aufgibt (bei gleichem Nutzen). Sie fällt mit $x_1$: abnehmende MRS, Mischungen werden bevorzugt.",
+      "loesungsweg": "$MRS = \\frac{\\partial U/\\partial x_1}{\\partial U/\\partial x_2} = \\frac{2x_1x_2}{x_1^2} = \\frac{2x_2}{x_1}$. Die MRS ist die negative Steigung der Indifferenzkurve. Je mehr Gut 1 man hat, desto weniger Gut 2 gibt man für noch mehr Gut 1 auf.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 4
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-4a",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Skizzieren Sie (in Worten) Indifferenzkurven für zwei Güter, die ohne das jeweils andere keinen Nutzen haben. Nennen Sie ein Beispiel, eine passende Nutzenfunktion und die Richtung der Bessermenge.",
+      "loesung": "Beispiel: linke und rechte Schuhe, $u(l,r) = \\min\\{l, r\\}$. Indifferenzkurven sind rechtwinklige „L“-Formen mit Knick auf der Geraden $l = r$. Bessermenge nach rechts oben (mehr von beiden).",
+      "loesungsweg": "Perfekte Komplemente: mehr von nur einem Gut erhöht den Nutzen nicht.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 6
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-4b",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Skizzieren Sie (in Worten) Indifferenzkurven für zwei perfekt substituierbare Güter. Nennen Sie ein Beispiel, eine passende Nutzenfunktion und die Richtung der Bessermenge.",
+      "loesung": "Beispiel: Coca-Cola und Pepsi im Verhältnis 1:1, $u(c,f) = c + f$. Indifferenzkurven sind fallende Geraden mit Steigung $-1$. Bessermenge nach rechts oben.",
+      "loesungsweg": "Perfekte Substitute: konstante MRS, lineare Indifferenzkurven.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 6
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-4c",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Skizzieren Sie (in Worten) Indifferenzkurven für „Asphaltierung der Umwelt“ und „Stau“. Geben Sie eine mögliche Nutzenfunktion und die Richtung der Bessermenge an.",
+      "loesung": "Beide sind „Schlechte“. Z. B. $u = -(\\text{asph} + \\text{stau})$. Indifferenzkurven sind fallende Geraden, die Bessermenge liegt Richtung Ursprung (links unten).",
+      "loesungsweg": "Weniger von beidem ist besser. Monotonie gilt hier in umgekehrter Richtung.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-5a",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Konnis Nutzenfunktion ist $U(x_1,x_2) = x_1x_2$. Berechnen Sie den Nutzen der Bündel $a = (4;4)$, $b = (2;8)$, $c = (9;1)$ und interpretieren Sie das Ergebnis.",
+      "loesung": "$U(a) = 16$, $U(b) = 16$, $U(c) = 9$. $a \\sim b \\succ c$",
+      "loesungsweg": "$4\\cdot 4 = 16$, $2\\cdot 8 = 16$, $9\\cdot 1 = 9$. $a$ und $b$ liegen auf derselben Indifferenzkurve, $c$ auf einer niedrigeren.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": false,
+      "werte": [
+        {
+          "label": "U(a)",
+          "wert": 16
+        },
+        {
+          "label": "U(b)",
+          "wert": 16
+        },
+        {
+          "label": "U(c)",
+          "wert": 9
+        }
+      ]
+    },
+    {
+      "id": "K3-U3-5b",
+      "kapitel": 3,
+      "typ": "multiple_choice",
+      "aufgabentext": "Konnis Nutzenfunktion ist $U = x_1x_2$. Was ändert sich an der Präferenzordnung, wenn man stattdessen $\\hat{U} = \\sqrt{U}$ oder $\\tilde{U} = 2U$ verwendet?",
+      "loesung": "Nichts, denn beides sind positiv monotone Transformationen.",
+      "loesungsweg": "Eine positiv monotone Transformation erhält die Reihenfolge aller Bündel. Nutzen ist ordinal.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": false,
+      "optionen": [
+        "Nichts, denn beides sind positiv monotone Transformationen.",
+        "Bei $\\tilde{U} = 2U$ werden alle Bündel doppelt so stark bevorzugt.",
+        "Bei $\\hat{U} = \\sqrt{U}$ kehrt sich die Ordnung um.",
+        "Die Indifferenzkurven werden zu Geraden."
+      ]
+    },
+    {
+      "id": "K3-U3-5c-i",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie, dass sich $U(x_1,x_2) = 3 + \\min(3x_1, 9x_2)$ als $\\tilde{U}(x_1,x_2) = \\min(x_1, 3x_2)$ darstellen lässt.",
+      "loesung": "$\\tilde{U} = \\frac{1}{3}(U - 3) = \\min(x_1, 3x_2)$",
+      "loesungsweg": "Konstante abziehen: $U - 3 = \\min(3x_1, 9x_2)$. Durch 3 teilen (positiver Faktor): $\\frac{1}{3}\\min(3x_1, 9x_2) = \\min(x_1, 3x_2)$. Beides sind positiv monotone Transformationen.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": true
+    },
+    {
+      "id": "K3-U3-5c-ii",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie, dass sich $U(x_1,x_2) = x_1^2x_2^4$ als $\\tilde{U}(x_1,x_2) = x_1^{1/3}x_2^{2/3}$ darstellen lässt.",
+      "loesung": "$\\tilde{U} = U^{1/6}$",
+      "loesungsweg": "$(x_1^2x_2^4)^{1/6} = x_1^{2/6}x_2^{4/6} = x_1^{1/3}x_2^{2/3}$. $f(u) = u^{1/6}$ ist für $u \\geq 0$ monoton steigend.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": false
+    },
+    {
+      "id": "K3-U3-5c-iii",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie, dass sich $U(x_1,x_2) = x_1^2 + 2x_1x_2 + x_2^2$ als $\\tilde{U}(x_1,x_2) = x_1 + x_2$ darstellen lässt.",
+      "loesung": "$\\tilde{U} = \\sqrt{U}$",
+      "loesungsweg": "Binomische Formel: $U = (x_1 + x_2)^2$. Für $x_1, x_2 \\geq 0$ ist $\\sqrt{U} = x_1 + x_2$, und die Wurzel ist monoton steigend.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 7
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-01",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Definieren Sie, ausgehend von der schwachen Präferenz $\\succsim$, die starke Präferenz $\\succ$ und die Indifferenz $\\sim$.",
+      "loesung": "$x \\succ y \\Leftrightarrow x \\succsim y$ und nicht $y \\succsim x$. $x \\sim y \\Leftrightarrow x \\succsim y$ und $y \\succsim x$.",
+      "loesungsweg": "Starke Präferenz: Konni mag $x$ mehr als $y$. Indifferenz: genauso gern.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 7
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-02",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Beweisen Sie: Aus $x \\succ y$ und $y \\succ z$ folgt $x \\succ z$.",
+      "loesung": "Aus der Definition folgt $x \\succsim z$ (Transitivität von $\\succsim$), und $z \\succsim x$ führt zum Widerspruch.",
+      "loesungsweg": "Aus $x \\succ y$, $y \\succ z$ folgt $x \\succsim y$ und $y \\succsim z$, also $x \\succsim z$. Bleibt zu zeigen: nicht $z \\succsim x$. Widerspruchsbeweis: Angenommen $z \\succsim x$. Mit $x \\succsim y$ folgt durch Transitivität $z \\succsim y$. Das widerspricht $y \\succ z$ (dort gilt nicht $z \\succsim y$).",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 9
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-03",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Beweisen Sie die gemischte Transitivität: Aus $x \\succ y$ und $z \\sim y$ folgt $x \\succ z$.",
+      "loesung": "$x \\succsim z$ folgt aus $x \\succsim y \\succsim z$; $z \\succsim x$ würde zu $y \\succsim x$ führen, ein Widerspruch.",
+      "loesungsweg": "$z \\sim y$ heißt $z \\succsim y$ und $y \\succsim z$. Aus $x \\succsim y$ und $y \\succsim z$ folgt $x \\succsim z$. Angenommen $z \\succsim x$: Mit $y \\succsim z$ folgt $y \\succsim x$. Widerspruch zu $x \\succ y$. Also $x \\succ z$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 8
+      },
+      "check": true
+    },
+    {
+      "id": "K3-VL-04",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Es gibt 5 Bündel mit der Ordnung $b^{(3)} \\sim b^{(5)} \\succ b^{(1)} \\succ b^{(2)} \\sim b^{(4)}$. Welche Indifferenzmengen gibt es, wie sind sie geordnet, und welches Bündel wählt Konni?",
+      "loesung": "$I_1 = \\{b^{(3)}, b^{(5)}\\}$, $I_2 = \\{b^{(1)}\\}$, $I_3 = \\{b^{(2)}, b^{(4)}\\}$, mit $I_1$ besser als $I_2$ besser als $I_3$. Konni wählt $b^{(3)}$ oder $b^{(5)}$ (beide beste Bündel).",
+      "loesungsweg": "Indifferente Bündel bilden eine Menge. Eine Nutzenfunktion ordnet z. B. $u_1 > u_2 > u_3$ den Mengen zu.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 11
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-05",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Erläutern Sie am Beispiel von Schokoriegeln mit unterschiedlichem Kakaogehalt, warum die Transitivität in der Realität problematisch sein kann.",
+      "loesung": "Der Gaumen bemerkt 0,5 % Unterschied nicht: 100 % $\\sim$ 99,5 % und 99,5 % $\\sim$ 99 %. Transitivität verlangt dann 100 % $\\sim$ 99 %. Wiederholt man das, folgt irgendwann 100 % $\\sim$ 80 %, obwohl man diesen Unterschied deutlich schmeckt.",
+      "loesungsweg": "Kleine, unmerkliche Unterschiede summieren sich zu großen. Indifferenz ist in der Realität oft nicht transitiv.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 12
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-06",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Definieren Sie die Annahmen Monotonie und Konvexität von Präferenzen und fassen Sie sie jeweils in einem Satz zusammen.",
+      "loesung": "Monotonie: Aus $x \\geq y$ (komponentenweise) folgt $x \\succsim y$, und bei $x \\neq y$ sogar $x \\succ y$. Kurz: Mehr ist besser. Konvexität: Die Bessermenge $A(x)$ ist konvex, d. h. aus $y, z \\in A(x)$ folgt $\\alpha y + (1-\\alpha)z \\in A(x)$ für $\\alpha \\in [0,1]$. Kurz: Mischungen sind mindestens genauso gut.",
+      "loesungsweg": "Bessermenge $A(x) = \\{y \\in X \\mid y \\succsim x\\}$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 13
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-07",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Berechnen Sie die Mischung $\\alpha y + (1-\\alpha)z$ für $\\alpha = 0{,}25$, $y = (4, 8)$ und $z = (8, 4)$.",
+      "loesung": "$(7, 5)$",
+      "loesungsweg": "Komponentenweise: $0{,}25\\cdot 4 + 0{,}75\\cdot 8 = 1 + 6 = 7$; $0{,}25\\cdot 8 + 0{,}75\\cdot 4 = 2 + 3 = 5$.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 13
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "Gut 1",
+          "wert": 7
+        },
+        {
+          "label": "Gut 2",
+          "wert": 5
+        }
+      ]
+    },
+    {
+      "id": "K3-VL-08",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Welche Eigenschaften von Indifferenzkurven folgen aus den Annahmen Vollständigkeit, Transitivität, Monotonie und Konvexität? Ordnen Sie jeder Eigenschaft ihre Annahme zu.",
+      "loesung": "Vollständigkeit: Jedes Bündel liegt auf einer Indifferenzkurve. Transitivität: Indifferenzkurven kreuzen sich nicht. Monotonie: keine „dicken“ Indifferenzmengen, höhere Kurven sind besser, Kurven fallen. Konvexität: Kurven sind konvex (zum Ursprung gewölbt). (Stetigkeit: Kurven sind stetig.)",
+      "loesungsweg": "Merkhilfe: eine Annahme pro Eigenschaft, Monotonie liefert gleich drei.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 18
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-09",
+      "kapitel": 3,
+      "typ": "multiple_choice",
+      "aufgabentext": "Welche Annahme sorgt dafür, dass Indifferenzkurven fallen?",
+      "loesung": "Monotonie",
+      "loesungsweg": "Wenn man mehr von Gut 1 bekommt, muss man bei gleichem Nutzen weniger von Gut 2 haben, sonst wäre das Bündel strikt besser.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 18
+      },
+      "check": false,
+      "optionen": [
+        "Monotonie",
+        "Vollständigkeit",
+        "Transitivität",
+        "Konvexität"
+      ]
+    },
+    {
+      "id": "K3-VL-10",
+      "kapitel": 3,
+      "typ": "freitext",
+      "aufgabentext": "Was ist der Unterschied zwischen ordinalem und kardinalem Nutzen? Was ist eine positiv monotone Transformation?",
+      "loesung": "Ordinal: nur die Reihenfolge der Bündel ist bedeutsam. Kardinal: auch die absoluten Werte und Differenzen (z. B. „doppelt so gern“). Positiv monotone Transformation: $v(x) = f(u(x))$ mit $f$ streng steigend; $v$ stellt dieselben Präferenzen dar.",
+      "loesungsweg": "Für die Beschreibung von Verhalten reicht ordinaler Nutzen.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 23
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-11",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie durch implizites Differenzieren her, dass die Steigung der Indifferenzkurve $-\\frac{MU_1}{MU_2}$ ist.",
+      "loesung": "$g'(x_1) = -\\frac{\\partial u/\\partial x_1}{\\partial u/\\partial x_2} = -\\frac{MU_1}{MU_2}$",
+      "loesungsweg": "Die Indifferenzkurve zum Wert $\\bar{u}$ ist implizit gegeben durch $u(x_1, g(x_1)) = \\bar{u}$. Total nach $x_1$ ableiten: $\\frac{\\partial u}{\\partial x_1} + \\frac{\\partial u}{\\partial x_2}g'(x_1) = 0$. Umformen: $g'(x_1) = -\\frac{\\partial u/\\partial x_1}{\\partial u/\\partial x_2}$. $MRS_1 = MU_1/MU_2$ ist die negative Steigung.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 25
+      },
+      "check": false
+    },
+    {
+      "id": "K3-VL-12",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Berechnen Sie für $u(x_1,x_2) = x_1x_2$ die Grenzrate der Substitution $MRS_1$ im Punkt $(2, 8)$.",
+      "loesung": "$MRS_1 = 4$",
+      "loesungsweg": "$MU_1 = x_2$, $MU_2 = x_1$, also $MRS_1 = \\frac{x_2}{x_1} = \\frac{8}{2} = 4$. Konni würde für eine Einheit Gut 1 bis zu 4 Einheiten Gut 2 aufgeben.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 25
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "MRS_1",
+          "wert": 4
+        }
+      ]
+    },
+    {
+      "id": "K3-VL-13",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Berechnen Sie die $MRS_1$ für $u(x_1,x_2) = \\sqrt{x_1x_2}$ und für $v(x_1,x_2) = \\ln x_1 + \\ln x_2$ jeweils im Punkt $(4, 1)$.",
+      "loesung": "Beide: $MRS_1 = 0{,}25$",
+      "loesungsweg": "$u$: $MU_1 = \\frac{1}{2}\\sqrt{x_2/x_1}$, $MU_2 = \\frac{1}{2}\\sqrt{x_1/x_2}$, also $MRS_1 = x_2/x_1 = 1/4$. $v$: $MU_1 = 1/x_1$, $MU_2 = 1/x_2$, also $MRS_1 = x_2/x_1 = 1/4$. Beide stellen dieselbe Präferenz dar (monotone Transformation von $x_1x_2$).",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 28
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "MRS_1 für u",
+          "wert": 0.25
+        },
+        {
+          "label": "MRS_1 für v",
+          "wert": 0.25
+        }
+      ]
+    },
+    {
+      "id": "K3-VL-14",
+      "kapitel": 3,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie: Ist $v(x) = f(u(x))$ mit $f$ streng monoton steigend und differenzierbar, dann haben $u$ und $v$ dieselbe Grenzrate der Substitution.",
+      "loesung": "$MRS^v = \\frac{f'(u)\\,\\partial u/\\partial x_1}{f'(u)\\,\\partial u/\\partial x_2} = MRS^u$",
+      "loesungsweg": "Kettenregel: $\\frac{\\partial v}{\\partial x_i} = f'(u(x))\\cdot\\frac{\\partial u}{\\partial x_i}$. Im Quotienten kürzt sich $f'(u(x)) > 0$ heraus. Deshalb hat der Grenznutzen allein keine Bedeutung, die MRS aber schon.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_3_handout.pdf",
+        "seite": 28
+      },
+      "check": true
+    },
+    {
+      "id": "K3-VL-15",
+      "kapitel": 3,
+      "typ": "rechnen",
+      "aufgabentext": "Berechnen Sie für $U(x_1,x_2) = x_1^2x_2$ die Grenzrate der Substitution im Punkt $(3, 1)$.",
+      "loesung": "$MRS = \\frac{2}{3} \\approx 0{,}667$",
+      "loesungsweg": "$MRS = \\frac{2x_1x_2}{x_1^2} = \\frac{2x_2}{x_1} = \\frac{2\\cdot 1}{3} = \\frac{2}{3}$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 3 - Lösungen.pdf",
+        "seite": 4
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "MRS",
+          "wert": 0.6667
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-1a",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Skizzieren Sie (in Worten) ein Konsumentscheidungsproblem in einem $x_1$-$x_2$-Diagramm mit innerer Lösung (im Optimum werden beide Güter konsumiert).",
+      "loesung": "Fallende Budgetgerade von $(0, m/p_2)$ bis $(m/p_1, 0)$. Mehrere konvexe, fallende Indifferenzkurven. Die höchste erreichbare Indifferenzkurve berührt die Budgetgerade in genau einem Punkt $x^*$ mit $x_1^* > 0$, $x_2^* > 0$ (Tangentialpunkt).",
+      "loesungsweg": "Kernpunkte: Budgetgerade, konvexe Indifferenzkurven, Tangentialpunkt im Inneren.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 1
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-1b",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Wie lautet die Tangentialbedingung und warum gilt sie in einem inneren Optimum? Argumentieren Sie inhaltlich (Was wäre, wenn eine Seite größer wäre?).",
+      "loesung": "$MRS_1 = \\frac{MU_1}{MU_2} = \\frac{p_1}{p_2} = OC_1$. Wäre $MRS_1 > p_1/p_2$, würde der Konsument für eine Einheit Gut 1 mehr Gut 2 aufgeben wollen, als er muss. Er könnte durch Umschichten zu Gut 1 seinen Nutzen erhöhen. Bei $MRS_1 < p_1/p_2$ umgekehrt. Nur bei Gleichheit lohnt kein Tausch.",
+      "loesungsweg": "Die Tauschbereitschaft (MRS) muss dem Markttauschverhältnis (OC) entsprechen. Grafisch: Steigungen von Indifferenzkurve und Budgetgerade sind gleich.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 1
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-1c",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie aus $\\max_{x_1,x_2} U(x_1,x_2)$ unter der Nebenbedingung $m = p_1x_1 + p_2x_2$ die Tangentialbedingung mit der Lagrange-Methode her.",
+      "loesung": "$\\frac{\\partial U/\\partial x_1}{\\partial U/\\partial x_2} = \\frac{p_1}{p_2}$",
+      "loesungsweg": "$\\mathcal{L} = U(x_1,x_2) - \\lambda(p_1x_1 + p_2x_2 - m)$.\n(1) $\\frac{\\partial U}{\\partial x_1} - \\lambda p_1 = 0$\n(2) $\\frac{\\partial U}{\\partial x_2} - \\lambda p_2 = 0$\n(3) $p_1x_1 + p_2x_2 = m$\n(1) durch (2) teilen: $\\frac{MU_1}{MU_2} = \\frac{p_1}{p_2}$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 1
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-2a",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Sarah kauft Mandeln ($p_M = 3$ € je 100 g) und Blaubeeren ($p_B = 2{,}25$ € je 100 g), Budget $7{,}50$ €. Nutzen: $U(x_M, x_B) = x_M^{0{,}4}x_B^{0{,}6}$ ($x$ in 100 g). Lösen Sie das Nutzenmaximierungsproblem mit der Lagrange-Methode (Tipp: Logarithmus).",
+      "loesung": "$x_M = 1$ (100 g Mandeln), $x_B = 2$ (200 g Blaubeeren)",
+      "loesungsweg": "$\\ln U = 0{,}4\\ln x_M + 0{,}6\\ln x_B$. $\\mathcal{L} = 0{,}4\\ln x_M + 0{,}6\\ln x_B - \\lambda(3x_M + 2{,}25x_B - 7{,}5)$.\n(1) $\\frac{0{,}4}{x_M} = 3\\lambda$, (2) $\\frac{0{,}6}{x_B} = 2{,}25\\lambda$.\n(1)/(2): $\\frac{0{,}4x_B}{0{,}6x_M} = \\frac{3}{2{,}25} \\Rightarrow 2{,}25x_B = 4{,}5x_M \\Rightarrow x_B = 2x_M$.\nIn (3): $3x_M + 4{,}5x_M = 7{,}5 \\Rightarrow x_M = 1$, $x_B = 2$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 1
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_M",
+          "wert": 1
+        },
+        {
+          "label": "x_B",
+          "wert": 2
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-2b",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Sarah: $x_M = 1$ (je 100 g) zu $p_M = 3$ €, Budget $7{,}50$ €, Nutzen $U = x_M^{0{,}4}x_B^{0{,}6}$. Wie hoch ist der Anteil der Ausgaben für Mandeln am Gesamtbudget?",
+      "loesung": "$0{,}4$ (40 %)",
+      "loesungsweg": "$\\frac{p_Mx_M}{m} = \\frac{3 \\cdot 1}{7{,}5} = 0{,}4$. Bei Cobb-Douglas mit Exponentensumme 1 entspricht der Ausgabenanteil dem Exponenten.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 1
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "Anteil Mandeln",
+          "wert": 0.4
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-CD",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie für $U(x_1,x_2) = x_1^\\alpha x_2^{1-\\alpha}$ mit $\\alpha \\in (0,1)$ die optimale Nachfrage her und zeigen Sie, dass der Ausgabenanteil für Gut 1 gleich $\\alpha$ ist.",
+      "loesung": "$x_1^* = \\alpha\\frac{m}{p_1}$, $x_2^* = (1-\\alpha)\\frac{m}{p_2}$, $\\frac{p_1x_1^*}{m} = \\alpha$",
+      "loesungsweg": "$\\mathcal{L} = \\alpha\\ln x_1 + (1-\\alpha)\\ln x_2 - \\lambda(p_1x_1 + p_2x_2 - m)$.\n$\\frac{\\alpha}{x_1} = \\lambda p_1$, $\\frac{1-\\alpha}{x_2} = \\lambda p_2$ $\\Rightarrow p_1x_1 = \\frac{\\alpha}{\\lambda}$, $p_2x_2 = \\frac{1-\\alpha}{\\lambda}$.\nSumme: $m = \\frac{1}{\\lambda}$, also $p_1x_1 = \\alpha m$, $p_2x_2 = (1-\\alpha)m$. Der Anteil hängt weder von Preisen noch vom Einkommen ab.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 2
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-3a",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Timmy hat 10 €. Kleiner Chip ($x_1$, 1 Runde) kostet 1 €, großer Chip ($x_2$, 3 Runden) kostet 2 €. $U(x_1,x_2) = x_1 + 3x_2$. Skizzieren Sie (in Worten) Timmys Entscheidungsproblem.",
+      "loesung": "Budgetgerade $x_1 + 2x_2 = 10$ (Steigung $-0{,}5$, Achsenabschnitte 10 und 5). Indifferenzkurven sind Geraden mit Steigung $-1/3$, also flacher als die BG. Die höchste erreichbare Indifferenzkurve berührt die BG an der $x_2$-Achse: Randlösung $(0, 5)$.",
+      "loesungsweg": "Perfekte Substitute: Vergleich der Steigungen entscheidet, welche Ecke optimal ist.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 2
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-3b",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Timmy: $U(x_1,x_2) = x_1 + 3x_2$, $p_1 = 1$, $p_2 = 2$, $m = 10$. Wie hoch ist der Anteil der Ausgaben für Gut 1 (kleiner Chip) an seinem Budget? (Ohne ein Lagrange-Problem zu lösen.)",
+      "loesung": "$0$ (0 %); Timmy kauft nur große Chips: $x_2 = 5$",
+      "loesungsweg": "Runden pro Euro: kleiner Chip $1/1 = 1$, großer Chip $3/2 = 1{,}5$. Formal: $\\frac{a}{b} = \\frac{1}{3} < \\frac{p_1}{p_2} = \\frac{1}{2}$, also alles für Gut 2: $x_2 = 10/2 = 5$, $x_1 = 0$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 2
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "Anteil Gut 1",
+          "wert": 0
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-4a",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Frieda baut mit 150 Legosteinen Häuschen: 4 Wände ($x_W$, je 16 Steine) und 1 Dach ($x_D$, 11 Steine) pro Haus. $U(x_W, x_D) = \\min\\{\\frac{1}{4}x_W, x_D\\}$. Skizzieren Sie (in Worten) das Entscheidungsproblem.",
+      "loesung": "Ressourcenbeschränkung $16x_W + 11x_D = 150$ als fallende Gerade. Indifferenzkurven sind L-förmig mit Knick auf der Geraden $x_W = 4x_D$. Optimum: Schnittpunkt dieser Geraden mit der Beschränkung.",
+      "loesungsweg": "Perfekte Komplemente: Optimum am Knick, keine Steine verschwenden.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-4b",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Frieda: 150 Legosteine, Wand $= 16$ Steine, Dach $= 11$ Steine, $U(x_W,x_D) = \\min\\{\\frac{1}{4}x_W, x_D\\}$. Wie viele Wände und Dächer werden gebaut, und wie hoch ist der Anteil der Steine, der für Wände verwendet wird?",
+      "loesung": "$x_W = 8$, $x_D = 2$, Anteil $\\frac{128}{150} \\approx 0{,}853$ (85,3 %)",
+      "loesungsweg": "Optimum am Knick: $\\frac{1}{4}x_W = x_D \\Rightarrow x_W = 4x_D$. In die Beschränkung: $16\\cdot 4x_D + 11x_D = 75x_D = 150 \\Rightarrow x_D = 2$, $x_W = 8$. Steine für Wände: $16\\cdot 8 = 128$, Anteil $128/150 \\approx 0{,}853$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_W",
+          "wert": 8
+        },
+        {
+          "label": "x_D",
+          "wert": 2
+        },
+        {
+          "label": "Anteil Wände",
+          "wert": 0.8533
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-5a",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie für die quasilineare Nutzenfunktion $U(x_1,x_2) = x_1 + \\sqrt{x_2}$ die Nachfrage nach beiden Gütern in Abhängigkeit von $p_1$, $p_2$ und $m$ her. Unterscheiden Sie innere Lösung und Randlösung.",
+      "loesung": "Innere Lösung (falls $m > \\frac{p_1^2}{4p_2}$): $x_2^* = \\frac{p_1^2}{4p_2^2}$, $x_1^* = \\frac{m}{p_1} - \\frac{p_1}{4p_2}$. Sonst Randlösung: $x_1^* = 0$, $x_2^* = \\frac{m}{p_2}$.",
+      "loesungsweg": "$MRS_1 = \\frac{MU_1}{MU_2} = \\frac{1}{1/(2\\sqrt{x_2})} = 2\\sqrt{x_2}$. TB: $2\\sqrt{x_2} = \\frac{p_1}{p_2} \\Rightarrow x_2 = \\frac{p_1^2}{4p_2^2}$ (unabhängig von $m$). Ausgaben dafür: $p_2x_2 = \\frac{p_1^2}{4p_2}$. Rest für Gut 1: $x_1 = \\frac{m - p_1^2/(4p_2)}{p_1}$. Ist das negativ, reicht das Einkommen nicht: Alles geht in Gut 2.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true
+    },
+    {
+      "id": "K4-U4-5b-i",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "$U(x_1,x_2) = x_1 + \\sqrt{x_2}$, $p_1 = 2$, $p_2 = 1$, $m = 12$. Bestimmen Sie das optimale Konsumbündel.",
+      "loesung": "$x_1 = 5{,}5$, $x_2 = 1$",
+      "loesungsweg": "TB: $2\\sqrt{x_2} = \\frac{2}{1} \\Rightarrow x_2 = 1$, kostet 1 €. Rest: $x_1 = (12 - 1)/2 = 5{,}5 > 0$, also innere Lösung. MRS = Preisverhältnis gilt.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 5.5
+        },
+        {
+          "label": "x_2",
+          "wert": 1
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-5b-ii",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "$U(x_1,x_2) = x_1 + \\sqrt{x_2}$, $p_1 = 2$, $p_2 = 1$, $m = 2$. Bestimmen Sie das optimale Konsumbündel. Gilt „MRS = Preisverhältnis“?",
+      "loesung": "$x_1 = 0{,}5$, $x_2 = 1$; ja, die Bedingung gilt (innere Lösung)",
+      "loesungsweg": "TB: $x_2 = 1$, kostet 1 €. Rest $1$ € für Gut 1: $x_1 = 0{,}5 > 0$. Also innere Lösung. Erst für $m < 1$ ergäbe sich eine Randlösung ($x_1 = 0$, $x_2 = m$), bei der MRS $\\neq$ Preisverhältnis. Hinweis: Die Übung zielt vermutlich auf eine Randlösung; mit den angegebenen Zahlen ist die Lösung aber innen.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 0.5
+        },
+        {
+          "label": "x_2",
+          "wert": 1
+        }
+      ]
+    },
+    {
+      "id": "K4-U4-5c",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Bei $U = x_1 + \\sqrt{x_2}$ hängt die Nachfrage nach Gut 2 nicht vom Einkommen ab (solange es reicht). Nennen Sie ein Güterpaar, für das man ein solches Nachfrageverhalten erwarten würde.",
+      "loesung": "Z. B. Gut 2 = Zahnpasta oder Salz, Gut 1 = Geld für alles andere. Man kauft eine feste Menge Zahnpasta, zusätzliches Einkommen fließt in andere Güter.",
+      "loesungsweg": "Eigene sinnvolle Beispiele zählen, wenn das Gut eine „Sättigungsmenge“ hat und das andere ein zusammengesetztes Gut ist.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "Übung 4.pdf",
+        "seite": 3
+      },
+      "check": true
+    },
+    {
+      "id": "K4-VL-01",
+      "kapitel": 4,
+      "typ": "multiple_choice",
+      "aufgabentext": "Warum muss ein optimales Bündel auf der Budgetgeraden liegen (und nicht im Inneren der Budgetmenge)?",
+      "loesung": "Wegen Monotonie: Im Inneren wäre noch Geld übrig, mit dem man mehr kaufen und den Nutzen erhöhen könnte.",
+      "loesungsweg": "Monotonie = mehr ist besser. Jedes Bündel unter der BG lässt Budget ungenutzt.",
+      "schwierigkeit": 1,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 8
+      },
+      "check": false,
+      "optionen": [
+        "Wegen Monotonie: Im Inneren wäre noch Geld übrig, mit dem man mehr kaufen und den Nutzen erhöhen könnte.",
+        "Wegen Konvexität: Mischungen sind besser.",
+        "Wegen Vollständigkeit: Jedes Bündel ist vergleichbar.",
+        "Weil die Budgetmenge eine Gerade ist."
+      ]
+    },
+    {
+      "id": "K4-VL-02",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Konni konsumiert ein Bündel mit $MRS_1 = 3$, die Opportunitätskosten sind $OC_1 = p_1/p_2 = 1$. Was sollte sie tun und warum? Wohin entwickelt sich die MRS?",
+      "loesung": "Sie sollte mehr Gut 1 und weniger Gut 2 kaufen. Sie wäre bereit, 3 Einheiten Gut 2 für eine Einheit Gut 1 aufzugeben, muss aber nur 1 aufgeben. Mit mehr $x_1$ fällt die MRS (Konvexität), bis $MRS_1 = OC_1$ gilt.",
+      "loesungsweg": "Ökonomischer Anreiz hinter der Tangentialbedingung.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 12
+      },
+      "check": true
+    },
+    {
+      "id": "K4-VL-03",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Nennen Sie vier Fälle, in denen die Tangentialbedingung nicht (oder nicht eindeutig) das Optimum liefert, und welche Annahme jeweils verletzt bzw. betroffen ist.",
+      "loesung": "(1) Sättigung: Monotonie verletzt, Optimum im Inneren der Budgetmenge. (2) Konkave Indifferenzkurven: Konvexität verletzt, TB liefert evtl. ein Minimum. (3) Geknickte Indifferenzkurven: nicht differenzierbar, keine eindeutige Tangente. (4) Indifferenzkurven schneiden die Achsen: Randlösungen möglich.",
+      "loesungsweg": "(3) und (4) sind auch unter Standard-Annahmen möglich.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 15
+      },
+      "check": false
+    },
+    {
+      "id": "K4-VL-04",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie: Bei strikt konvexen Präferenzen ist das optimale Bündel eindeutig.",
+      "loesung": "Widerspruchsbeweis: zwei verschiedene Optima $y$, $z$ → Mischung ist leistbar und strikt besser.",
+      "loesungsweg": "Angenommen $y \\neq z$ sind beide optimal, dann $y \\sim z$. Die Budgetmenge ist konvex, also ist $x = \\alpha y + (1-\\alpha)z$ für $0 < \\alpha < 1$ leistbar. Strikte Konvexität: $x \\succ y$. Das widerspricht der Optimalität von $y$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 13
+      },
+      "check": false
+    },
+    {
+      "id": "K4-VL-05",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "$u(x_1,x_2) = x_1^{0{,}3}x_2^{0{,}7}$, $m = 200$, $p_1 = 3$, $p_2 = 7$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 20$, $x_2^* = 20$",
+      "loesungsweg": "Cobb-Douglas: $x_1^* = \\alpha\\frac{m}{p_1} = 0{,}3\\cdot\\frac{200}{3} = 20$, $x_2^* = (1-\\alpha)\\frac{m}{p_2} = 0{,}7\\cdot\\frac{200}{7} = 20$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 28
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 20
+        },
+        {
+          "label": "x_2",
+          "wert": 20
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-06",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "$u(x_1,x_2) = x_1^2x_2^3$, $m = 100$, $p_1 = 4$, $p_2 = 6$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 10$, $x_2^* = 10$",
+      "loesungsweg": "Monotone Transformation $u^{1/5} = x_1^{0{,}4}x_2^{0{,}6}$, also $\\alpha = \\frac{2}{2+3} = 0{,}4$. $x_1^* = 0{,}4\\cdot\\frac{100}{4} = 10$, $x_2^* = 0{,}6\\cdot\\frac{100}{6} = 10$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 29
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 10
+        },
+        {
+          "label": "x_2",
+          "wert": 10
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-07",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Zeigen Sie, dass $\\tilde{u}(x_1,x_2) = \\gamma\\ln x_1 + \\delta\\ln x_2$ mit $\\gamma, \\delta > 0$ Cobb-Douglas-Präferenzen beschreibt.",
+      "loesung": "$\\tilde{u} = \\ln(x_1^\\gamma x_2^\\delta)$ ist eine monotone Transformation einer Cobb-Douglas-Funktion.",
+      "loesungsweg": "Logarithmus-Regeln: $\\gamma\\ln x_1 + \\delta\\ln x_2 = \\ln(x_1^\\gamma x_2^\\delta)$. $\\ln$ ist streng steigend, also gleiche Präferenzen wie $x_1^\\gamma x_2^\\delta$. Mit Exponent $\\frac{1}{\\gamma+\\delta}$ erhält man $x_1^\\alpha x_2^{1-\\alpha}$ mit $\\alpha = \\frac{\\gamma}{\\gamma+\\delta}$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 29
+      },
+      "check": true
+    },
+    {
+      "id": "K4-VL-08",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Perfekte Substitute: $u(x_1,x_2) = 2x_1 + x_2$, $p_1 = 3$, $p_2 = 1$, $m = 30$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 0$, $x_2^* = 30$",
+      "loesungsweg": "$\\frac{a}{b} = 2 < \\frac{p_1}{p_2} = 3$: Gut 1 ist relativ zu teuer. Alles für Gut 2: $x_2 = 30/1 = 30$. (Nutzen 30 statt $2\\cdot 10 = 20$ bei nur Gut 1.)",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 30
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 0
+        },
+        {
+          "label": "x_2",
+          "wert": 30
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-09",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Perfekte Substitute: $u(x_1,x_2) = x_1 + x_2$, $p_1 = 2$, $p_2 = 4$, $m = 40$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 20$, $x_2^* = 0$",
+      "loesungsweg": "$\\frac{a}{b} = 1 > \\frac{p_1}{p_2} = 0{,}5$: Alles für Gut 1: $x_1 = 40/2 = 20$.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 31
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 20
+        },
+        {
+          "label": "x_2",
+          "wert": 0
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-10",
+      "kapitel": 4,
+      "typ": "multiple_choice",
+      "aufgabentext": "Perfekte Substitute $u = ax_1 + bx_2$. Was gilt, wenn $\\frac{a}{b} = \\frac{p_1}{p_2}$?",
+      "loesung": "Jedes Bündel auf der Budgetgeraden ist optimal.",
+      "loesungsweg": "Indifferenzkurven und Budgetgerade haben dieselbe Steigung, die BG liegt auf einer Indifferenzkurve.",
+      "schwierigkeit": 2,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 30
+      },
+      "check": false,
+      "optionen": [
+        "Jedes Bündel auf der Budgetgeraden ist optimal.",
+        "Es wird nur Gut 1 gekauft.",
+        "Es wird nur Gut 2 gekauft.",
+        "Es gibt kein Optimum."
+      ]
+    },
+    {
+      "id": "K4-VL-11",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Perfekte Komplemente: $u(x_1,x_2) = \\min\\{x_1, 2x_2\\}$, $p_1 = 2$, $p_2 = 4$, $m = 64$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 16$, $x_2^* = 8$",
+      "loesungsweg": "Statt MRS = OC: $x_1 = 2x_2$ (keine Geldverschwendung). Einsetzen: $2\\cdot 2x_2 + 4x_2 = 8x_2 = 64 \\Rightarrow x_2 = 8$, $x_1 = 16$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 32
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 16
+        },
+        {
+          "label": "x_2",
+          "wert": 8
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-12",
+      "kapitel": 4,
+      "typ": "herleitung",
+      "aufgabentext": "Leiten Sie für perfekte Komplemente $u(x_1,x_2) = \\min\\{ax_1, bx_2\\}$ die Nachfrage $x_1^*$, $x_2^*$ in Abhängigkeit von $p_1$, $p_2$, $m$ her.",
+      "loesung": "$x_1^* = \\frac{bm}{bp_1 + ap_2}$, $x_2^* = \\frac{am}{bp_1 + ap_2}$",
+      "loesungsweg": "Optimum am Knick: $ax_1 = bx_2 \\Rightarrow x_2 = \\frac{a}{b}x_1$. In die BG: $p_1x_1 + p_2\\frac{a}{b}x_1 = m \\Rightarrow x_1 = \\frac{m}{p_1 + p_2a/b} = \\frac{bm}{bp_1 + ap_2}$. Daraus $x_2 = \\frac{a}{b}x_1 = \\frac{am}{bp_1 + ap_2}$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 32
+      },
+      "check": true
+    },
+    {
+      "id": "K4-VL-13",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Quasilinear: $u(x_1,x_2) = \\ln x_1 + x_2$, $p_1 = 2$, $p_2 = 1$, $m = 10$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 0{,}5$, $x_2^* = 9$",
+      "loesungsweg": "$MRS_1 = v'(x_1) = \\frac{1}{x_1}$. TB: $\\frac{1}{x_1} = \\frac{p_1}{p_2} = 2 \\Rightarrow x_1 = 0{,}5$, kostet $1$. Rest: $x_2 = (10 - 1)/1 = 9$.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 34
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 0.5
+        },
+        {
+          "label": "x_2",
+          "wert": 9
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-14",
+      "kapitel": 4,
+      "typ": "rechnen",
+      "aufgabentext": "Quasilinear: $u(x_1,x_2) = \\ln x_1 + x_2$, $p_1 = 2$, $p_2 = 1$, aber nur $m = 0{,}5$. Bestimmen Sie das optimale Bündel.",
+      "loesung": "$x_1^* = 0{,}25$, $x_2^* = 0$ (Randlösung)",
+      "loesungsweg": "Die TB verlangt $x_1 = 0{,}5$, das würde $1 > m$ kosten. Ein negatives $x_2$ ist nicht erlaubt, also Randlösung: Alles für Gut 1, $x_1 = 0{,}5/2 = 0{,}25$, $x_2 = 0$. Hier gilt $MRS_1 = 4 > 2$.",
+      "schwierigkeit": 4,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 34
+      },
+      "check": true,
+      "werte": [
+        {
+          "label": "x_1",
+          "wert": 0.25
+        },
+        {
+          "label": "x_2",
+          "wert": 0
+        }
+      ]
+    },
+    {
+      "id": "K4-VL-15",
+      "kapitel": 4,
+      "typ": "freitext",
+      "aufgabentext": "Warum sind die Indifferenzkurven bei quasilinearen Präferenzen $u = v(x_1) + x_2$ „vertikal parallel“, und welche Folge hat das für mögliche Lösungen?",
+      "loesung": "Die MRS $= v'(x_1)$ hängt nur von $x_1$ ab, nicht von $x_2$. Für jedes $x_1$ haben alle Kurven dieselbe Steigung: sie sind vertikal verschobene Kopien. Daher schneiden sie die Achse, und es sind Randlösungen möglich. Wegen $v'' < 0$ ist die Lösung eindeutig.",
+      "loesungsweg": "Die Nachfrage nach Gut 1 hängt (bei innerer Lösung) nicht vom Einkommen ab.",
+      "schwierigkeit": 3,
+      "quelle": {
+        "datei": "VL_4_handout.pdf",
+        "seite": 34
+      },
+      "check": false
+    }
+  ]
+}
