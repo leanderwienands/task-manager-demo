@@ -52,6 +52,15 @@ Supabase → **Authentication**:
 - Bunker-Training ändert Wiederholungstermine, aber nicht das Handicap und nicht den Streak.
 - Fehler aus der Zeit vor dem Bunker werden beim ersten Öffnen automatisch übernommen.
 
+## Boss-Kampf
+- **Frei** ab Handicap unter 18 im Kapitel.
+- **5 Aufgaben** im Klausurstil: bevorzugt Altklausuren (Dateiname mit „Klausur“, gibt es noch keine), dann Übungsblätter, eher schwer, gemischte Typen.
+- **Punkte** je Aufgabe: 2 × Schwierigkeit. Richtig = volle, teils = halbe Punkte. Bestanden ab 50 %.
+- **Zeitlimit**: je Aufgabe 2 × Schwierigkeit + 2 Minuten. Die Uhr läuft weiter, auch wenn die App geschlossen ist; bei Ablauf wird automatisch abgegeben.
+- Lösungen erst nach der Abgabe, dann Korrektur (Rechnen automatisch, Freitext/Herleitung selbst bewerten).
+- Gespeichert: Ergebnis in `boss_ergebnisse`, jede Antwort (Modus „boss“), Wiederholungstermine, Bunker. Handicap und Streak ändern sich nicht.
+- **Testmodus**: App-Adresse mit `?bosstest` am Ende öffnen → alle Bosse frei, nichts wird gespeichert.
+
 ## Lokal starten (optional, braucht Node.js)
 ```bash
 npm install

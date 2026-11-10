@@ -131,3 +131,24 @@ button.bewertung.falsch { background: var(--fehler); }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ---------- Boss-Kampf ---------- */
+.regeln { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.uhr { font-variant-numeric: tabular-nums; font-weight: 600; }
+.uhr.knapp { color: var(--fehler); }
+.reiter { display: flex; gap: 6px; margin: 4px 0 12px; }
+.reiter button {
+  flex: 1;
+  padding: 8px 0;
+  background: var(--karte);
+  color: var(--text);
+  border: 1px solid var(--rand);
+}
+.reiter button.erledigt { background: var(--flaeche); border-color: var(--akzent); }
+.reiter button.aktiv { background: var(--akzent); color: var(--karte); }
+.zweier { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+button.zweitrangig { background: var(--karte); color: var(--akzent); border: 1px solid var(--rand); }
+button.bewertung.blass { opacity: 0.35; }
+.eigene { white-space: pre-wrap; }
+.boss-zeile { align-items: center; }
+button.klein-knopf { padding: 8px 14px; font-size: 15px; white-space: nowrap; }

@@ -93,6 +93,14 @@ export async function speichereAntwort(a: {
   pruefe(await supabase.from('antworten').insert({ ...a, eingabe: a.eingabe ?? null }));
 }
 
+/** Mehrere Antworten auf einmal (Boss-Kampf). */
+export async function speichereAntworten(
+  liste: { aufgabe_id: string; kapitel: number; modus: Modus; ergebnis: Ergebnis; eingabe?: unknown }[],
+): Promise<void> {
+  if (liste.length === 0) return;
+  pruefe(await supabase.from('antworten').insert(liste.map((a) => ({ ...a, eingabe: a.eingabe ?? null }))));
+}
+
 /** Neueste Antworten zuerst. */
 export async function ladeAntworten(limit = 1000): Promise<Antwort[]> {
   return pruefe(

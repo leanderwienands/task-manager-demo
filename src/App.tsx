@@ -5,11 +5,14 @@ import { Login } from './components/Login';
 import { Start } from './components/Start';
 import { Runde } from './components/Runde';
 import { Bunker } from './components/Bunker';
+import { Boss } from './components/Boss';
+import { bossTestModus } from './lib/einstellungen';
 
 export function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [bereit, setBereit] = useState(false);
-  const [ansicht, setAnsicht] = useState<'start' | 'runde' | 'bunker'>('start');
+  const [ansicht, setAnsicht] = useState<'start' | 'runde' | 'bunker' | 'boss'>('start');
+  const [bossKapitel, setBossKapitel] = useState(0);
 
   useEffect(() => {
     if (konfigFehler) return;
@@ -31,7 +34,14 @@ export function App() {
   if (!session) return <Login />;
   if (ansicht === 'runde') return <Runde onZurueck={() => setAnsicht('start')} />;
   if (ansicht === 'bunker') return <Bunker onZurueck={() => setAnsicht('start')} />;
+  if (ansicht === 'boss')
+    return <Boss kapitel={bossKapitel} test={bossTestModus()} onZurueck={() => setAnsicht('start')} />;
   return (
-    <Start email={session.user.email ?? ''} onRunde={() => setAnsicht('runde')} onBunker={() => setAnsicht('bunker')} />
+    <Start email={session.user.email ?? ''} onRunde={() => setAnsicht('runde')} onBunker={() => setAnsicht('bunker')}
+      onBoss={(k) => {
+        setBossKapitel(k);
+        setAnsicht('boss');
+      }}
+    />
   );
 }

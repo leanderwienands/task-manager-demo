@@ -5,6 +5,7 @@ import {
   initialisiereHandicaps,
   ladeFortschritt,
   ladeAntworten,
+  ladeBossErgebnisse,
   ladeHandicaps,
   ladeWiederholungen,
   type Fortschritt,
@@ -12,21 +13,35 @@ import {
 import { heute } from '../lib/datum';
 import { aktuellerStreak } from '../lib/runde';
 import { ladeBunkerAbgeglichen } from '../lib/antwort';
-import { ladeLaufendeRunde, ladeToleranz, speichereToleranz } from '../lib/einstellungen';
+import {
+  bossTestModus,
+  ladeLaufendenBoss,
+  ladeLaufendeRunde,
+  ladeToleranz,
+  speichereToleranz,
+} from '../lib/einstellungen';
+import { BOSS_FREI_UNTER, bossFrei } from '../lib/boss';
 
 export function Start({
   email,
   onRunde,
   onBunker,
+  onBoss,
 }: {
   email: string;
   onRunde: () => void;
   onBunker: () => void;
+  onBoss: (kapitel: number) => void;
 }) {
   const [handicaps, setHandicaps] = useState<Record<number, number> | null>(null);
   const [fortschritt, setFortschritt] = useState<Fortschritt | null>(null);
   const [faellig, setFaellig] = useState<number | null>(null);
   const [imBunker, setImBunker] = useState<number | null>(null);
+  const [bossBilanz, setBossBilanz] = useState<Record<number, { versuche: number; bestanden: boolean; bestProzent: number }>>(
+    {},
+  );
+  const test = bossTestModus();
+  const laufenderBoss = ladeLaufendenBoss();
   const [fehler, setFehler] = useState<string | null>(null);
   const [toleranz, setToleranz] = useState(ladeToleranz);
   const tag = heute();
@@ -45,6 +60,16 @@ export function Start({
           ladeAntworten(),
         ]);
         setImBunker((await ladeBunkerAbgeglichen(a)).size);
+        const bilanz: typeof bossBilanz = {};
+        for (const e of await ladeBossErgebnisse()) {
+          const alt = bilanz[e.kapitel] ?? { versuche: 0, bestanden: false, bestProzent: 0 };
+          bilanz[e.kapitel] = {
+            versuche: alt.versuche + 1,
+            bestanden: alt.bestanden || e.bestanden,
+            bestProzent: Math.max(alt.bestProzent, Math.round((Number(e.punkte) / Number(e.max_punkte)) * 100)),
+          };
+        }
+        setBossBilanz(bilanz);
         setHandicaps(h);
         setFortschritt(f);
         setFaellig(w.filter((x) => x.faellig_am <= heute()).length);
@@ -105,6 +130,40 @@ export function Start({
         <button onClick={onBunker} disabled={!!fehler || imBunker === null}>
           Bunker öffnen
         </button>
+      </section>
+
+      <section className="karte">
+        <h2>Boss-Kämpfe</h2>
+        <p className="klein">
+          Klausur am Kapitelende mit Zeitlimit. Frei ab Handicap unter {BOSS_FREI_UNTER} im Kapitel.
+        </p>
+        {test && <p className="hinweis">Testmodus: alle Bosse frei, nichts wird gespeichert.</p>}
+        <ul className="liste">
+          {KAPITEL.map((k) => {
+            const h = handicaps?.[k.nr];
+            const frei = test || bossFrei(h);
+            const bilanz = bossBilanz[k.nr];
+            const laeuft = laufenderBoss?.kapitel === k.nr;
+            return (
+              <li key={k.nr} className="boss-zeile">
+                <span>
+                  {k.nr}. {k.titel}
+                  <span className="klein">
+                    {' · '}
+                    {bilanz
+                      ? `${bilanz.bestanden ? 'besiegt ✓' : 'noch nicht besiegt'}, bestes Ergebnis ${bilanz.bestProzent} %`
+                      : frei
+                        ? 'bereit'
+                        : `gesperrt (Handicap ${h?.toLocaleString('de-DE') ?? '…'}, nötig unter ${BOSS_FREI_UNTER})`}
+                  </span>
+                </span>
+                <button className="klein-knopf" disabled={!frei && !laeuft} onClick={() => onBoss(k.nr)}>
+                  {laeuft ? 'Fortsetzen' : frei ? 'Kämpfen' : '🔒'}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <section className="karte">
