@@ -80,3 +80,7 @@ button.link { background: none; color: var(--akzent); padding: 4px; }
 }
 .liste li:last-child { border-bottom: none; }
 code { font-size: 0.9em; }
+.meldung p, .info p { margin: 0; }
+.meldung, .info { display: flex; flex-direction: column; gap: 6px; }
+.info { color: var(--text); }
+.technisch { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; color: var(--text-leise); word-break: break-word; }
