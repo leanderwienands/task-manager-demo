@@ -1,6 +1,8 @@
 node_modules/
-data/tasks.json
-.env
 dist/
-coverage/
+.env
+.env.local
+.env.*.local
 .DS_Store
+.vercel
+*.tsbuildinfo

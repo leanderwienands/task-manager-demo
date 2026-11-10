@@ -1,62 +1,45 @@
-# Task Manager
+# Mikro 1 Training
 
-A responsive task manager with a Node.js/Express REST API, local JSON persistence, and a vanilla JavaScript Kanban frontend.
+Lern-App für die Klausur Mikroökonomie 1 (React + Vite + TypeScript, Supabase, Vercel).
 
-## Setup
+- Aufgabenpool: `src/data/aufgaben.json`
+- Datenbankschema: `supabase/schema.sql`
+- Speicher-Schicht: `src/lib/speicher.ts`
 
+## Einrichtung (einmalig)
+
+### 1. Datenbank in Supabase anlegen
+1. Auf supabase.com einloggen und das Projekt öffnen.
+2. Links **SQL Editor** → **New query**.
+3. Inhalt von `supabase/schema.sql` komplett hineinkopieren → **Run**.
+4. Kontrolle: Links **Table Editor** zeigt 6 Tabellen: `antworten`, `handicap`, `bunker`, `wiederholung`, `fortschritt`, `boss_ergebnisse`.
+
+### 2. Keys holen
+Supabase → **Project Settings** (Zahnrad) → **API** bzw. **API Keys**.
+
+Du brauchst zwei Werte:
+- **Project URL**: sieht aus wie `https://abcdefgh.supabase.co` (manchmal unter **Data API**).
+- **Öffentlicher Key**: heißt je nach Ansicht `anon` `public` (beginnt mit `eyJ…`) oder **Publishable key** (beginnt mit `sb_publishable_…`). Beide funktionieren.
+
+⚠️ Niemals den `service_role`- oder **Secret**-Key verwenden. Der darf nie in die App.
+
+### 3. App auf Vercel veröffentlichen
+1. Auf vercel.com mit GitHub anmelden → **Add New… → Project** → dieses Repository importieren.
+2. Framework „Vite“ wird erkannt; nichts ändern.
+3. Unter **Environment Variables** eintragen:
+   - `VITE_SUPABASE_URL` = Project URL
+   - `VITE_SUPABASE_ANON_KEY` = öffentlicher Key
+4. **Deploy**.
+
+### 4. Login-Einstellungen in Supabase
+Supabase → **Authentication**:
+- **URL Configuration** → **Site URL** = deine Vercel-Adresse (z. B. `https://….vercel.app`).
+- Optional: **Sign In / Providers → Email → Confirm email** ausschalten. Dann ist keine Bestätigungsmail nötig.
+- Nach deiner eigenen Registrierung: **Allow new users to sign up** ausschalten. Dann kann sich niemand sonst anmelden.
+
+## Lokal starten (optional, braucht Node.js)
 ```bash
 npm install
+cp .env.example .env.local   # Werte eintragen
 npm run dev
-```
-
-Open `http://localhost:3000`.
-
-## Scripts
-
-| Command | Description |
-| --- | --- |
-| `npm start` | Starts the production server. |
-| `npm run dev` | Starts the server in Node watch mode. |
-| `npm run lint` | Runs ESLint. |
-| `npm run format` | Formats the project with Prettier. |
-| `npm test` | Runs Jest, Supertest, and coverage. |
-
-## API Reference
-
-| Method | Endpoint | Description | Body |
-| --- | --- | --- | --- |
-| `GET` | `/api/tasks` | List tasks. Supports `status`, `priority`, `sortBy`, and `direction`. | None |
-| `GET` | `/api/tasks/:id` | Get one task by id. | None |
-| `POST` | `/api/tasks` | Create a task. | `title`, `description`, `status`, `priority`, `dueDate` |
-| `PUT` | `/api/tasks/:id` | Update a task. | Any task input field |
-| `PATCH` | `/api/tasks/:id` | Partially update a task. | Any task input field |
-| `DELETE` | `/api/tasks/:id` | Delete a task. | None |
-
-Task fields are `id`, `title`, `description`, `status`, `priority`, `dueDate`, `createdAt`, and `updatedAt`. The server owns IDs and timestamps.
-
-## Environment Variables
-
-| Name | Default | Description |
-| --- | --- | --- |
-| `PORT` | `3000` | HTTP server port. |
-| `NODE_ENV` | unset | Hides stack traces when set to `production`. |
-| `TASKS_FILE` | `data/tasks.json` | Local JSON file used for persistence. |
-
-## Validation and Security
-
-The API rejects unknown fields, validates every request body, strips HTML tags from string input, rate-limits `/api` routes to 100 requests per 15 minutes, and sends Helmet security headers.
-
-## Contributing
-
-Use commit messages in this format:
-
-```text
-feat|fix|chore|test|docs: short description
-```
-
-Before opening a pull request, run:
-
-```bash
-npm run lint
-npm test
 ```
