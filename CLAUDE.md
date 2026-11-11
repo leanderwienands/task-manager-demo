@@ -22,4 +22,4 @@ TECH
 React + Vite + TypeScript, Deployment über Vercel.
 
 ARBEITSWEISE
-Erst Plan, dann bauen. Ein Feature pro Session, danach Testplan für mich und Commit. Reihenfolge: Extraktion, Speicherung, Tägliche Runde, Bunker, Boss, Design. Antworten knapp, keine unnötigen Dateien lesen. Ich bin Laie: erkläre jeden Schritt einfach und sage mir genau, was ich tun muss.
+Erst Plan, dann bauen. Ein Feature pro Session, danach Testplan für mich, Commit, Push und Pull Request nach main (den PR legt Claude selbst an, ich merge nur). Reihenfolge: Extraktion, Speicherung, Tägliche Runde, Bunker, Boss, Design. Antworten knapp, keine unnötigen Dateien lesen. Ich bin Laie: erkläre jeden Schritt einfach und sage mir genau, was ich tun muss.
