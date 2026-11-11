@@ -9,10 +9,12 @@ import {
   ladeHandicaps,
   ladeWiederholungen,
   START_HANDICAP,
+  zaehleAntworten,
+  type Ergebnis,
   type Fortschritt,
 } from '../lib/speicher';
 import { heute } from '../lib/datum';
-import { aktuellerStreak } from '../lib/runde';
+import { HANDICAP_MAX, aktuellerStreak } from '../lib/runde';
 import { ladeBunkerAbgeglichen } from '../lib/antwort';
 import {
   bossTestModus,
@@ -37,6 +39,8 @@ export function Start({
   const [handicaps, setHandicaps] = useState<Record<number, number> | null>(null);
   const [fortschritt, setFortschritt] = useState<Fortschritt | null>(null);
   const [faellig, setFaellig] = useState<number | null>(null);
+  const [statistik, setStatistik] = useState<Record<Ergebnis, number> | null>(null);
+  const [gesehen, setGesehen] = useState<number | null>(null);
   const [imBunker, setImBunker] = useState<number | null>(null);
   const [bossBilanz, setBossBilanz] = useState<Record<number, { versuche: number; bestanden: boolean; bestProzent: number }>>(
     {},
@@ -74,6 +78,9 @@ export function Start({
         setHandicaps(h);
         setFortschritt(f);
         setFaellig(w.filter((x) => x.faellig_am <= heute()).length);
+        const bekannt = new Set(AUFGABEN.map((x) => x.id));
+        setGesehen(new Set([...w.map((x) => x.aufgabe_id), ...a.map((x) => x.aufgabe_id)].filter((id) => bekannt.has(id))).size);
+        setStatistik(await zaehleAntworten());
       } catch (e) {
         setFehler(e instanceof Error ? e.message : String(e));
       }
@@ -137,7 +144,8 @@ export function Start({
         <div>
           <h2>Kapitel</h2>
           <p className="klein">
-            Handicap: Start {START_HANDICAP}, niedriger ist besser. Boss-Kampf frei unter {BOSS_FREI_UNTER} (Markierung).
+            Handicap: Start {START_HANDICAP}, niedriger ist besser. Je voller der Balken, desto besser. Striche: Start (
+            {START_HANDICAP}) und Boss-Grenze ({BOSS_FREI_UNTER}).
           </p>
         </div>
         <div>
@@ -146,7 +154,7 @@ export function Start({
             const frei = test || bossFrei(h);
             const bilanz = bossBilanz[k.nr];
             const laeuft = laufenderBoss?.kapitel === k.nr;
-            const anteil = h === undefined ? 0 : Math.min(1, Math.max(0, (START_HANDICAP - h) / START_HANDICAP));
+            const anteil = h === undefined ? 0 : Math.min(1, Math.max(0, (HANDICAP_MAX - h) / HANDICAP_MAX));
             return (
               <div key={k.nr} className="kapitel">
                 <div className="kapitel-kopf">
@@ -160,7 +168,8 @@ export function Start({
                 </div>
                 <div className="skala" aria-hidden>
                   <i className={frei ? 'frei' : ''} style={{ width: `${anteil * 100}%` }} />
-                  <b style={{ left: `${((START_HANDICAP - BOSS_FREI_UNTER) / START_HANDICAP) * 100}%` }} />
+                  <b className="start" style={{ left: `${((HANDICAP_MAX - START_HANDICAP) / HANDICAP_MAX) * 100}%` }} />
+                  <b style={{ left: `${((HANDICAP_MAX - BOSS_FREI_UNTER) / HANDICAP_MAX) * 100}%` }} />
                 </div>
                 <div className="kapitel-fuss">
                   <span className="klein">
@@ -180,6 +189,64 @@ export function Start({
             );
           })}
         </div>
+      </section>
+
+      <section className="karte">
+        <h2>Statistik</h2>
+        {statistik === null ? (
+          <p className="klein">…</p>
+        ) : (
+          (() => {
+            const gesamt = statistik.richtig + statistik.teils + statistik.falsch;
+            const pz = (n: number) => (gesamt ? Math.round((n / gesamt) * 100) : 0);
+            return (
+              <>
+                <div className="kacheln">
+                  <div className="kachel">
+                    <strong>{gesamt}</strong>
+                    <span>Antworten</span>
+                  </div>
+                  <div className="kachel">
+                    <strong>{gesehen ?? '…'}</strong>
+                    <span>von {AUFGABEN.length} Aufgaben gesehen</span>
+                  </div>
+                  <div className="kachel">
+                    <strong>{pz(statistik.richtig)} %</strong>
+                    <span>richtig</span>
+                  </div>
+                </div>
+                {gesamt > 0 && (
+                  <div className="verteilung" aria-hidden>
+                    <i className="richtig" style={{ width: `${pz(statistik.richtig)}%` }} />
+                    <i className="teils" style={{ width: `${pz(statistik.teils)}%` }} />
+                    <i className="falsch" style={{ width: `${pz(statistik.falsch)}%` }} />
+                  </div>
+                )}
+                <ul className="liste">
+                  <li>
+                    <span className="treffer">Richtig</span>
+                    <span className="zahl">
+                      {statistik.richtig} · {pz(statistik.richtig)} %
+                    </span>
+                  </li>
+                  <li>
+                    <span className="mittel">Teils</span>
+                    <span className="zahl">
+                      {statistik.teils} · {pz(statistik.teils)} %
+                    </span>
+                  </li>
+                  <li>
+                    <span className="daneben">Falsch</span>
+                    <span className="zahl">
+                      {statistik.falsch} · {pz(statistik.falsch)} %
+                    </span>
+                  </li>
+                </ul>
+                <p className="klein">Zählt alle Antworten aus Runde, Bunker-Training und Boss-Kämpfen.</p>
+              </>
+            );
+          })()
+        )}
       </section>
 
       <section className="karte">

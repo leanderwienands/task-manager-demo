@@ -61,6 +61,9 @@ Supabase → **Authentication**:
 - Gespeichert: Ergebnis in `boss_ergebnisse`, jede Antwort (Modus „boss“), Wiederholungstermine, Bunker. Handicap und Streak ändern sich nicht.
 - **Testmodus**: App-Adresse mit `?bosstest` am Ende öffnen → alle Bosse frei, nichts wird gespeichert.
 
+## Statistik
+Startseite → Karte „Statistik“: alle Antworten (Runde, Bunker, Boss) mit Anteil richtig/teils/falsch und wie viele verschiedene Aufgaben schon gesehen wurden.
+
 ## Design und iPhone
 - Schlicht und neutral, hell und dunkel (folgt der Systemeinstellung), Farben und Maße in `src/styles.css` oben unter `:root`.
 - **Auf dem iPhone wie eine App nutzen:** Seite in Safari öffnen → Teilen-Symbol → **„Zum Home-Bildschirm“**. Die App startet dann ohne Browserleiste und mit eigenem Symbol (`public/icon.svg`, `public/apple-touch-icon.png`).

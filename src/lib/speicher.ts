@@ -101,6 +101,17 @@ export async function speichereAntworten(
   pruefe(await supabase.from('antworten').insert(liste.map((a) => ({ ...a, eingabe: a.eingabe ?? null }))));
 }
 
+/** Anzahl aller Antworten je Ergebnis (zählt in der Datenbank, ohne Obergrenze). */
+export async function zaehleAntworten(): Promise<Record<Ergebnis, number>> {
+  const zaehle = async (e: Ergebnis) => {
+    const res = await supabase.from('antworten').select('id', { count: 'exact', head: true }).eq('ergebnis', e);
+    if (res.error) throw new Error(res.error.message);
+    return res.count ?? 0;
+  };
+  const [richtig, teils, falsch] = await Promise.all([zaehle('richtig'), zaehle('teils'), zaehle('falsch')]);
+  return { richtig, teils, falsch };
+}
+
 /** Neueste Antworten zuerst. */
 export async function ladeAntworten(limit = 1000): Promise<Antwort[]> {
   return pruefe(

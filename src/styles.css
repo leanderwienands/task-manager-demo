@@ -300,3 +300,11 @@ button.bewertung.blass { opacity: 0.3; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* Statistik */
+.verteilung { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--rand); }
+.verteilung i.richtig { background: var(--gut); }
+.verteilung i.teils { background: var(--mittel); }
+.verteilung i.falsch { background: var(--fehler); }
+.mittel { color: var(--mittel); }
+.skala > b.start { background: var(--text-leise); opacity: 0.5; }
