@@ -62,7 +62,8 @@ export function wendeBunkerFolgeAn(
  * (Fehler aus Runden, bevor es den Bunker gab).
  */
 export async function ladeBunkerAbgeglichen(antworten: Antwort[]): Promise<Map<string, BunkerEintrag>> {
-  const gespeichert = new Map((await ladeBunker()).map((e) => [e.aufgabe_id, e]));
+  // Einträge zu gelöschten Aufgaben ignorieren
+  const gespeichert = new Map((await ladeBunker()).filter((e) => nachId.has(e.aufgabe_id)).map((e) => [e.aufgabe_id, e]));
   const fehlend = [...bunkerAusHistorie(antworten, nachId).values()].filter((e) => !gespeichert.has(e.aufgabe_id));
   if (fehlend.length > 0) {
     await speichereBunkerEintraege(fehlend);
