@@ -1,20 +1,22 @@
 // Logik der Täglichen Runde: Auswahl, Bewertung, Spaced Repetition, Handicap, Streak.
 // Reine Funktionen ohne Datenbankzugriff, damit sie leicht prüfbar sind.
 import type { Aufgabe } from './aufgaben';
-import type { Antwort, Ergebnis, Fortschritt, Wiederholung } from './speicher';
+import type { Antwort, BunkerEintrag, Ergebnis, Fortschritt, Wiederholung } from './speicher';
 import { START_HANDICAP } from './speicher';
 import { plusTage, tagVon } from './datum';
 
 export const RUNDE_GROESSE = 9;
-const MAX_FAELLIG = 5;
-const MAX_SCHWACH = 2;
+const MAX_BUNKER = 3;
+const MAX_BUNKER_UND_FAELLIG = 6;
+const MAX_SCHWACH = 1;
 const MAX_INTERVALL = 60;
 export const HANDICAP_MIN = 0;
 export const HANDICAP_MAX = 54;
 
-export type Herkunft = 'faellig' | 'schwach' | 'neu' | 'vorgezogen';
+export type Herkunft = 'bunker' | 'faellig' | 'schwach' | 'neu' | 'vorgezogen';
 
 export const HERKUNFT_TEXT: Record<Herkunft, string> = {
+  bunker: 'Fehler-Bunker',
   faellig: 'Wiederholung',
   schwach: 'Schwachstelle',
   neu: 'Neu',
@@ -44,8 +46,9 @@ function mische<T>(liste: T[], zufall: () => number): T[] {
 
 /**
  * Stellt die Runde zusammen:
- * 1. bis zu 5 fällige Wiederholungen (am längsten überfällig zuerst),
- * 2. bis zu 2 Schwachstellen (zuletzt falsch/teils, aber noch nicht fällig),
+ * 0. bis zu 3 Aufgaben aus dem Fehler-Bunker (am längsten drin zuerst),
+ * 1. fällige Wiederholungen, bis zusammen mit dem Bunker 6 Plätze belegt sind,
+ * 2. 1 Schwachstelle (zuletzt falsch/teils, aber nicht im Bunker und nicht fällig),
  * 3. neue Aufgaben, bevorzugt aus Kapiteln mit hohem Handicap, Schwierigkeit passend zum Handicap,
  * 4. falls dann noch Plätze frei sind: weitere fällige bzw. vorgezogene Wiederholungen.
  * Aufgaben, die heute schon beantwortet wurden, kommen nicht noch einmal.
@@ -54,6 +57,7 @@ export function waehleRunde(p: {
   aufgaben: Aufgabe[];
   wiederholungen: Wiederholung[];
   antworten: Antwort[]; // neueste zuerst
+  bunker?: BunkerEintrag[];
   handicaps: Record<number, number>;
   heute: string;
   zufall?: () => number;
@@ -64,8 +68,9 @@ export function waehleRunde(p: {
   const gewaehlt: RundenAufgabe[] = [];
   const vergeben = new Set<string>();
   const frei = () => RUNDE_GROESSE - gewaehlt.length;
+  const imBunker = new Set((p.bunker ?? []).map((b) => b.aufgabe_id));
   const nimm = (a: Aufgabe, herkunft: Herkunft) => {
-    gewaehlt.push({ aufgabe: a, herkunft });
+    gewaehlt.push({ aufgabe: a, herkunft: imBunker.has(a.id) ? 'bunker' : herkunft });
     vergeben.add(a.id);
   };
 
@@ -85,15 +90,21 @@ export function waehleRunde(p: {
     .sort((x, y) => x.faellig_am.localeCompare(y.faellig_am) || hc(y.kapitel) - hc(x.kapitel));
   const gesehen = new Set([...p.wiederholungen.map((w) => w.aufgabe_id), ...letztesErgebnis.keys()]);
 
+  // 0. Fehler-Bunker
+  const bunker = (p.bunker ?? [])
+    .filter((b) => nachId.has(b.aufgabe_id) && !vergeben.has(b.aufgabe_id))
+    .sort((x, y) => x.richtig_tage.length - y.richtig_tage.length || x.seit.localeCompare(y.seit));
+  for (const b of bunker.slice(0, MAX_BUNKER)) nimm(nachId.get(b.aufgabe_id)!, 'bunker');
+
   // 1. Fällige
   for (const w of wiederholungen) {
-    if (gewaehlt.length >= MAX_FAELLIG) break;
-    if (w.faellig_am <= p.heute && !vergeben.has(w.aufgabe_id)) nimm(nachId.get(w.aufgabe_id)!, 'faellig');
+    if (gewaehlt.length >= MAX_BUNKER_UND_FAELLIG) break;
+    if (w.faellig_am <= p.heute && !vergeben.has(w.aufgabe_id) && !imBunker.has(w.aufgabe_id)) nimm(nachId.get(w.aufgabe_id)!, 'faellig');
   }
 
   // 2. Schwachstellen
   const schwach = p.aufgaben
-    .filter((a) => !vergeben.has(a.id) && ['falsch', 'teils'].includes(letztesErgebnis.get(a.id) ?? ''))
+    .filter((a) => !vergeben.has(a.id) && !imBunker.has(a.id) && ['falsch', 'teils'].includes(letztesErgebnis.get(a.id) ?? ''))
     .sort((x, y) => (fehlerpunkte.get(y.id) ?? 0) - (fehlerpunkte.get(x.id) ?? 0) || hc(y.kapitel) - hc(x.kapitel));
   for (const a of schwach.slice(0, Math.min(MAX_SCHWACH, frei()))) nimm(a, 'schwach');
 

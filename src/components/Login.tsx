@@ -34,8 +34,14 @@ export function Login() {
   }
 
   return (
-    <main className="seite">
-      <h1>Mikro 1 Training</h1>
+    <main className="seite login">
+      <div className="marke">
+        <img src="/icon.svg" alt="" />
+        <div>
+          <h1>Mikro 1 Training</h1>
+          <p>Klausurvorbereitung Mikroökonomie 1</p>
+        </div>
+      </div>
       <form onSubmit={absenden} className="karte">
         <h2>{modus === 'anmelden' ? 'Anmelden' : 'Konto anlegen'}</h2>
         <label>

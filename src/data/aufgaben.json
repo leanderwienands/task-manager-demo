@@ -542,30 +542,6 @@
       "check": false
     },
     {
-      "id": "K1-VL-10",
-      "kapitel": 1,
-      "typ": "rechnen",
-      "aufgabentext": "Im Wohnungsmarkt-Modell gibt es $Q^* = 100$ Wohnungen im inneren Ring, die Gleichgewichtsmiete ist $p^* = 800$ €. Es wird eine Steuer von $t = 100$ € pro Wohnung für die Vermieter eingeführt. Wie hoch sind die Nettomiete pro Wohnung und die gesamten Staatseinnahmen?",
-      "loesung": "Nettomiete $700$ €, Staatseinnahmen $10\\,000$ €",
-      "loesungsweg": "Miete bleibt $800$ (senkrechtes Angebot). Netto: $800 - 100 = 700$. Staatseinnahmen: $100 \\cdot 100 = 10\\,000$.",
-      "schwierigkeit": 2,
-      "quelle": {
-        "datei": "VL_1_handout.pdf",
-        "seite": 29
-      },
-      "check": true,
-      "werte": [
-        {
-          "label": "Nettomiete",
-          "wert": 700
-        },
-        {
-          "label": "Staatseinnahmen",
-          "wert": 10000
-        }
-      ]
-    },
-    {
       "id": "K1-VL-11",
       "kapitel": 1,
       "typ": "multiple_choice",

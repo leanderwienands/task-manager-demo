@@ -93,6 +93,25 @@ export async function speichereAntwort(a: {
   pruefe(await supabase.from('antworten').insert({ ...a, eingabe: a.eingabe ?? null }));
 }
 
+/** Mehrere Antworten auf einmal (Boss-Kampf). */
+export async function speichereAntworten(
+  liste: { aufgabe_id: string; kapitel: number; modus: Modus; ergebnis: Ergebnis; eingabe?: unknown }[],
+): Promise<void> {
+  if (liste.length === 0) return;
+  pruefe(await supabase.from('antworten').insert(liste.map((a) => ({ ...a, eingabe: a.eingabe ?? null }))));
+}
+
+/** Anzahl aller Antworten je Ergebnis (zählt in der Datenbank, ohne Obergrenze). */
+export async function zaehleAntworten(): Promise<Record<Ergebnis, number>> {
+  const zaehle = async (e: Ergebnis) => {
+    const res = await supabase.from('antworten').select('id', { count: 'exact', head: true }).eq('ergebnis', e);
+    if (res.error) throw new Error(res.error.message);
+    return res.count ?? 0;
+  };
+  const [richtig, teils, falsch] = await Promise.all([zaehle('richtig'), zaehle('teils'), zaehle('falsch')]);
+  return { richtig, teils, falsch };
+}
+
 /** Neueste Antworten zuerst. */
 export async function ladeAntworten(limit = 1000): Promise<Antwort[]> {
   return pruefe(
@@ -109,6 +128,7 @@ export async function ladeBunker(): Promise<BunkerEintrag[]> {
 export async function speichereBunkerEintrag(e: {
   aufgabe_id: string;
   kapitel: number;
+  seit?: string;
   richtig_tage?: string[];
 }): Promise<void> {
   pruefe(
@@ -116,6 +136,12 @@ export async function speichereBunkerEintrag(e: {
       .from('bunker')
       .upsert({ ...e, richtig_tage: e.richtig_tage ?? [] }, { onConflict: 'user_id,aufgabe_id' }),
   );
+}
+
+/** Mehrere Einträge auf einmal (für den Abgleich mit der Historie). */
+export async function speichereBunkerEintraege(e: BunkerEintrag[]): Promise<void> {
+  if (e.length === 0) return;
+  pruefe(await supabase.from('bunker').upsert(e, { onConflict: 'user_id,aufgabe_id' }));
 }
 
 export async function entferneAusBunker(aufgabe_id: string): Promise<void> {
